@@ -1819,9 +1819,6 @@
       item
         Width = 50
       end>
-    ExplicitLeft = 696
-    ExplicitTop = 344
-    ExplicitWidth = 0
   end
   object BalloonHint: TBalloonHint
     Left = 552

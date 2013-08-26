@@ -3,10 +3,11 @@ unit uDmDados;
 interface
 
 uses
-  System.SysUtils, System.Classes;
+  System.SysUtils, System.Classes, Data.DB, Data.SqlExpr, Data.DBXMySQL;
 
 type
   TDmDados = class(TDataModule)
+    SQLConnection: TSQLConnection;
   private
     { Private declarations }
   public
