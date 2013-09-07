@@ -1492,7 +1492,7 @@
     ShowHint = True
   end
   object Image4: TImage
-    Left = 344
+    Left = 336
     Top = 392
     Width = 89
     Height = 81

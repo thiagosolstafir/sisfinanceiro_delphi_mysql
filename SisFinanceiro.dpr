@@ -5,7 +5,8 @@ uses
   ufrmPrincipal in 'ufrmPrincipal.pas' {frmPrincipal},
   uDmDados in 'datamodule\uDmDados.pas' {DmDados: TDataModule},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uFrmCadastroBasico in 'view\uFrmCadastroBasico.pas' {frmCadastroBasico};
 
 {$R *.res}
 
