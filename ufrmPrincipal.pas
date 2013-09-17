@@ -30,6 +30,7 @@ type
     Timer: TTimer;
     procedure TimerTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Image4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,12 +44,24 @@ implementation
 
 {$R *.dfm}
 
+uses uFrmCadastroBasico;
+
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if Application.MessageBox('Deseja realmente sair?','Informação',MB_YESNO+MB_ICONQUESTION) = mrYes then
     Application.Terminate
   else
     Abort;
+end;
+
+procedure TfrmPrincipal.Image4Click(Sender: TObject);
+begin
+  frmCadastroBasico := TfrmCadastroBasico.Create(nil);
+  try
+    frmCadastroBasico.ShowModal;
+  finally
+    FreeAndNil(frmCadastroBasico);
+  end;
 end;
 
 procedure TfrmPrincipal.TimerTimer(Sender: TObject);

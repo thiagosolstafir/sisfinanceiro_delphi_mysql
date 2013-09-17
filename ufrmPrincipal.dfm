@@ -1500,6 +1500,7 @@
     Center = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = Image4Click
   end
   object imgRelPagar: TImage
     Left = 24

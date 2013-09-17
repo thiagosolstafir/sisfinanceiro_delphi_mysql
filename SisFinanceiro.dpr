@@ -14,7 +14,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Metropolis UI Blue');
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDmDados, DmDados);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.
