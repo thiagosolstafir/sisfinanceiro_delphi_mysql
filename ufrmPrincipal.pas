@@ -28,9 +28,10 @@ type
     imgRelCaixa: TImage;
     BalloonHint: TBalloonHint;
     Timer: TTimer;
+    Button1: TButton;
     procedure TimerTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Image4Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,15 +47,7 @@ implementation
 
 uses uFrmCadastroBasico;
 
-procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  if Application.MessageBox('Deseja realmente sair?','Informação',MB_YESNO+MB_ICONQUESTION) = mrYes then
-    Application.Terminate
-  else
-    Abort;
-end;
-
-procedure TfrmPrincipal.Image4Click(Sender: TObject);
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
   frmCadastroBasico := TfrmCadastroBasico.Create(nil);
   try
@@ -62,6 +55,14 @@ begin
   finally
     FreeAndNil(frmCadastroBasico);
   end;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if Application.MessageBox('Deseja realmente sair?','Informação',MB_YESNO+MB_ICONQUESTION) = mrYes then
+    Application.Terminate
+  else
+    Abort;
 end;
 
 procedure TfrmPrincipal.TimerTimer(Sender: TObject);

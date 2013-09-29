@@ -16,6 +16,7 @@ object frmCadastroBasico: TfrmCadastroBasico
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -25,7 +26,6 @@ object frmCadastroBasico: TfrmCadastroBasico
     Height = 49
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 392
     object ActionToolBar1: TActionToolBar
       Left = 1
       Top = 1
@@ -45,7 +45,6 @@ object frmCadastroBasico: TfrmCadastroBasico
       Font.Style = []
       ParentFont = False
       Spacing = 0
-      ExplicitLeft = 2
     end
   end
   object PageControl1: TPageControl
@@ -56,29 +55,49 @@ object frmCadastroBasico: TfrmCadastroBasico
     ActivePage = tbsCadastro
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 392
     object tbsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitHeight = 364
     end
     object tbsPesquisar: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
-      ExplicitHeight = 364
-      object DBGrid1: TDBGrid
+      object Label1: TLabel
+        Left = 5
+        Top = 6
+        Width = 50
+        Height = 13
+        Caption = 'Pesquisar:'
+      end
+      object dbgDados: TDBGrid
         Left = 0
-        Top = 81
+        Top = 64
         Width = 778
-        Height = 300
+        Height = 317
         Align = alBottom
         DataSource = dsTabela
         DrawingStyle = gdsGradient
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+      end
+      object edtPesquisar: TEdit
+        Left = 5
+        Top = 25
+        Width = 364
+        Height = 21
+        TabOrder = 1
+      end
+      object btnFiltrar: TBitBtn
+        Left = 375
+        Top = 23
+        Width = 75
+        Height = 25
+        Caption = 'Filtrar'
+        TabOrder = 2
       end
     end
   end
@@ -162,6 +181,7 @@ object frmCadastroBasico: TfrmCadastroBasico
       ImageIndex = 1
       ShortCut = 114
       OnExecute = actInserirExecute
+      OnUpdate = actInserirUpdate
     end
     object actEditar: TAction
       Caption = 'Editar'
@@ -169,6 +189,7 @@ object frmCadastroBasico: TfrmCadastroBasico
       ImageIndex = 3
       ShortCut = 115
       OnExecute = actEditarExecute
+      OnUpdate = actEditarUpdate
     end
     object actExcluir: TAction
       Caption = 'Excluir'
@@ -176,6 +197,7 @@ object frmCadastroBasico: TfrmCadastroBasico
       ImageIndex = 4
       ShortCut = 116
       OnExecute = actExcluirExecute
+      OnUpdate = actExcluirUpdate
     end
     object actSalvar: TAction
       Caption = 'Salvar'
@@ -183,6 +205,7 @@ object frmCadastroBasico: TfrmCadastroBasico
       ImageIndex = 7
       ShortCut = 117
       OnExecute = actSalvarExecute
+      OnUpdate = actSalvarUpdate
     end
     object actCancelar: TAction
       Caption = 'Cancelar'
@@ -204,6 +227,7 @@ object frmCadastroBasico: TfrmCadastroBasico
       ImageIndex = 6
       ShortCut = 120
       OnExecute = actImprimirExecute
+      OnUpdate = actImprimirUpdate
     end
     object actFechar: TAction
       Caption = 'Fechar'
@@ -217,7 +241,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 468
     Top = 240
     Bitmap = {
-      494C010109001800140020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109001800180020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

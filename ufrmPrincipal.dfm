@@ -1500,7 +1500,6 @@
     Center = True
     ParentShowHint = False
     ShowHint = True
-    OnClick = Image4Click
   end
   object imgRelPagar: TImage
     Left = 24
@@ -1820,6 +1819,15 @@
       item
         Width = 50
       end>
+  end
+  object Button1: TButton
+    Left = 456
+    Top = 344
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
   end
   object BalloonHint: TBalloonHint
     Left = 552
