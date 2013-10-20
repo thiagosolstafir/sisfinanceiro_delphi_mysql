@@ -21,6 +21,7 @@
     Top = 63
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Cadastro de Usu'#225'rios'
     CustomHint = BalloonHint
     Center = True
@@ -163,6 +164,7 @@
       3B14E8D9D633C09E6BAF3F17E15160CB962D58BD7AF571F7FF1FA2CF1FAA73FF
       E02F0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgUsuariosClick
   end
   object Label1: TLabel
     Left = 24
@@ -182,6 +184,7 @@
     Top = 63
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Cadastro de Contas a Receber'
     CustomHint = BalloonHint
     Center = True
@@ -349,6 +352,7 @@
     Top = 63
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Cadastro de Contas a Pagar'
     CustomHint = BalloonHint
     Center = True
@@ -592,6 +596,7 @@
     Top = 63
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Lan'#231'amentos no Caixa'
     CustomHint = BalloonHint
     Center = True
@@ -736,6 +741,7 @@
     Top = 63
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Consultar Contas a Receber'
     CustomHint = BalloonHint
     Center = True
@@ -906,6 +912,7 @@
     Top = 63
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Consultar Contas a Pagar'
     CustomHint = BalloonHint
     Center = True
@@ -1078,6 +1085,7 @@
     Top = 392
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Configura'#231#245'es'
     CustomHint = BalloonHint
     Center = True
@@ -1263,6 +1271,7 @@
     Top = 392
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Navegador'
     CustomHint = BalloonHint
     Center = True
@@ -1506,6 +1515,7 @@
     Top = 233
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Relat'#243'rio de Contas a Pagar'
     CustomHint = BalloonHint
     Center = True
@@ -1611,6 +1621,7 @@
     Top = 233
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Relat'#243'rio de Contas a Receber'
     CustomHint = BalloonHint
     Center = True
@@ -1712,6 +1723,7 @@
     Top = 233
     Width = 89
     Height = 81
+    Cursor = crHandPoint
     Hint = 'Relat'#243'rio de Lan'#231'amentos no Caixa'
     CustomHint = BalloonHint
     Center = True

@@ -13,44 +13,52 @@ type
   TfrmCadastroBasico = class(TForm)
     dsTabela: TDataSource;
     Panel1: TPanel;
-    ActionToolBar1: TActionToolBar;
     PageControl1: TPageControl;
     tbsCadastro: TTabSheet;
     tbsPesquisar: TTabSheet;
     dbgDados: TDBGrid;
     StatusBar1: TStatusBar;
-    ActionManagerCadastro: TActionManager;
-    actInserir: TAction;
-    actEditar: TAction;
-    actExcluir: TAction;
-    actSalvar: TAction;
-    actCancelar: TAction;
-    actPesquisar: TAction;
     ImageListCadastro: TImageList;
-    actImprimir: TAction;
-    actFechar: TAction;
     Label1: TLabel;
     edtPesquisar: TEdit;
     btnFiltrar: TBitBtn;
+    ActAcoes: TActionList;
+    acInserir: TAction;
+    acEditar: TAction;
+    acExcluir: TAction;
+    acSalvar: TAction;
+    acCancelar: TAction;
+    acPesquisar: TAction;
+    acImprimir: TAction;
+    acFechar: TAction;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure actInserirExecute(Sender: TObject);
-    procedure actEditarExecute(Sender: TObject);
-    procedure actExcluirExecute(Sender: TObject);
-    procedure actSalvarExecute(Sender: TObject);
-    procedure actCancelarExecute(Sender: TObject);
-    procedure actPesquisarExecute(Sender: TObject);
-    procedure actImprimirExecute(Sender: TObject);
-    procedure actFecharExecute(Sender: TObject);
-    procedure actCancelarUpdate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure actInserirUpdate(Sender: TObject);
-    procedure actSalvarUpdate(Sender: TObject);
-    procedure actExcluirUpdate(Sender: TObject);
-    procedure actEditarUpdate(Sender: TObject);
-    procedure actImprimirUpdate(Sender: TObject);
+    procedure acInserirExecute(Sender: TObject);
+    procedure acEditarExecute(Sender: TObject);
+    procedure acExcluirExecute(Sender: TObject);
+    procedure acSalvarExecute(Sender: TObject);
+    procedure acCancelarExecute(Sender: TObject);
+    procedure acPesquisarExecute(Sender: TObject);
+    procedure acImprimirExecute(Sender: TObject);
+    procedure acFecharExecute(Sender: TObject);
+    procedure acInserirUpdate(Sender: TObject);
+    procedure acEditarUpdate(Sender: TObject);
+    procedure acExcluirUpdate(Sender: TObject);
+    procedure acSalvarUpdate(Sender: TObject);
+    procedure acCancelarUpdate(Sender: TObject);
+    procedure acImprimirUpdate(Sender: TObject);
   private
     { Private declarations }
+    iModo : Integer;
     procedure LimparTudo;
   public
     { Public declarations }
@@ -65,31 +73,32 @@ implementation
 
 uses uDmDados;
 
-procedure TfrmCadastroBasico.actCancelarExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acCancelarExecute(Sender: TObject);
 begin
   TClientDataSet(dsTabela.DataSet).Cancel;
   LimparTudo;
 end;
 
-procedure TfrmCadastroBasico.actCancelarUpdate(Sender: TObject);
+procedure TfrmCadastroBasico.acCancelarUpdate(Sender: TObject);
 begin
-  actCancelar.Enabled := actSalvar.Enabled = true;
+  acCancelar.Enabled := acSalvar.Enabled = true;
 end;
 
-procedure TfrmCadastroBasico.actEditarExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acEditarExecute(Sender: TObject);
 begin
+  iModo := 1;
   if PageControl1.ActivePage = tbsPesquisar then
     PageControl1.ActivePage := tbsCadastro;
   TClientDataSet(dsTabela.DataSet).Edit;
 end;
 
-procedure TfrmCadastroBasico.actEditarUpdate(Sender: TObject);
+procedure TfrmCadastroBasico.acEditarUpdate(Sender: TObject);
 begin
   if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
-    actEditar.Enabled := dsTabela.State in [dsBrowse];
+    acEditar.Enabled := dsTabela.State in [dsBrowse];
 end;
 
-procedure TfrmCadastroBasico.actExcluirExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acExcluirExecute(Sender: TObject);
 begin
   if Application.MessageBox('Deseja realmente excluir o registro?','Pergunta',MB_YESNO+MB_ICONQUESTION) = mrYes then
   begin
@@ -104,30 +113,31 @@ begin
   end;
 end;
 
-procedure TfrmCadastroBasico.actExcluirUpdate(Sender: TObject);
+procedure TfrmCadastroBasico.acExcluirUpdate(Sender: TObject);
 begin
   if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
-    actExcluir.Enabled := dsTabela.State in [dsBrowse];
+    acExcluir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
-procedure TfrmCadastroBasico.actFecharExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acFecharExecute(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TfrmCadastroBasico.actImprimirExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acImprimirExecute(Sender: TObject);
 begin
   showmessage('Em desenvolvimento...');
 end;
 
-procedure TfrmCadastroBasico.actImprimirUpdate(Sender: TObject);
+procedure TfrmCadastroBasico.acImprimirUpdate(Sender: TObject);
 begin
   if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
-    actImprimir.Enabled := dsTabela.State in [dsBrowse];
+    acImprimir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
-procedure TfrmCadastroBasico.actInserirExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acInserirExecute(Sender: TObject);
 begin
+  iModo := 0;
   if PageControl1.ActivePage = tbsPesquisar then
     PageControl1.ActivePage := tbsCadastro;
   if not TClientDataSet(dsTabela.DataSet).Active then
@@ -135,26 +145,26 @@ begin
   TClientDataSet(dsTabela.DataSet).Insert;
 end;
 
-procedure TfrmCadastroBasico.actInserirUpdate(Sender: TObject);
+procedure TfrmCadastroBasico.acInserirUpdate(Sender: TObject);
 begin
-  actInserir.Enabled := dsTabela.State in [dsBrowse,dsInactive];
+  acInserir.Enabled := dsTabela.State in [dsBrowse,dsInactive];
 end;
 
-procedure TfrmCadastroBasico.actPesquisarExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acPesquisarExecute(Sender: TObject);
 begin
   TClientDataSet(dsTabela.DataSet).Close;
   TClientDataSet(dsTabela.DataSet).Open;
 end;
 
-procedure TfrmCadastroBasico.actSalvarExecute(Sender: TObject);
+procedure TfrmCadastroBasico.acSalvarExecute(Sender: TObject);
 begin
   try
     TClientDataSet(dsTabela.DataSet).Post;
     TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
-    case dsTabela.State of
-      dsEdit  : Application.MessageBox('Registro atualizado com sucesso!','Informação',MB_OK+MB_ICONINFORMATION);
-      dsInsert: Application.MessageBox('Registro inserido com sucesso!','Informação',MB_OK+MB_ICONINFORMATION);
+    case iModo of
+      0 : Application.MessageBox('Registro inserido com sucesso!','Informação',MB_OK+MB_ICONINFORMATION);
+      1 : Application.MessageBox('Registro atualizado com sucesso!','Informação',MB_OK+MB_ICONINFORMATION);
     end;
     //Limpar os campos
     LimparTudo;
@@ -164,9 +174,9 @@ begin
   end;
 end;
 
-procedure TfrmCadastroBasico.actSalvarUpdate(Sender: TObject);
+procedure TfrmCadastroBasico.acSalvarUpdate(Sender: TObject);
 begin
-  actSalvar.Enabled := dsTabela.State in [dsInsert,dsEdit];
+  acSalvar.Enabled := dsTabela.State in [dsInsert,dsEdit];
 end;
 
 procedure TfrmCadastroBasico.FormClose(Sender: TObject;

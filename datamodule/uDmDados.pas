@@ -51,12 +51,12 @@ type
     cdsContas_receberdt_cadastro: TDateField;
     cdsContas_receberstatus: TStringField;
     cdsContas_receberdt_pagamento: TDateField;
-    cdsUsuariosid: TIntegerField;
     cdsUsuariosnome: TStringField;
     cdsUsuarioslogin: TStringField;
     cdsUsuariossenha: TStringField;
     cdsUsuariosstatus: TStringField;
     cdsUsuariosdt_cadastro: TDateField;
+    cdsUsuariosid: TIntegerField;
   private
     { Private declarations }
   public

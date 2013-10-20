@@ -4,14 +4,22 @@
     <Transaction>2013/07/26 13:34:18.000.075,=C:\Users\thiagopc\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2013/07/26 13:35:01.000.100,=C:\Users\thiagopc\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2013/07/28 23:40:10.000.263,=C:\Users\thiagopc\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2013/07/28 23:41:13.000.155,C:\Users\thiagopc\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\ufrmPrincipal.pas</Transaction>
     <Transaction>2013/07/28 23:41:13.000.155,C:\Users\thiagopc\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\ufrmPrincipal.dfm</Transaction>
+    <Transaction>2013/07/28 23:41:13.000.155,C:\Users\thiagopc\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\ufrmPrincipal.pas</Transaction>
     <Transaction>2013/07/28 23:41:25.000.051,C:\Users\thiagopc\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\SisFinanceiro.dproj</Transaction>
     <Transaction>2013/07/28 23:46:15.000.878,=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
     <Transaction>2013/07/28 23:46:51.000.419,C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\datamodule\uDmDados.pas</Transaction>
     <Transaction>2013/07/28 23:46:51.000.419,C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.dfm=C:\Users\thiagopc\Documents\GitHub\sisfinanceiro_delphi_mysql\datamodule\uDmDados.dfm</Transaction>
     <Transaction>2013/09/06 21:36:06.000.867,=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
-    <Transaction>2013/09/06 21:36:25.000.668,C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\view\uFrmCadastroBasico.pas=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
     <Transaction>2013/09/06 21:36:25.000.668,C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\view\uFrmCadastroBasico.dfm=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.dfm</Transaction>
+    <Transaction>2013/09/06 21:36:25.000.668,C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\view\uFrmCadastroBasico.pas=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:10:49.150,=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:11:14.014,=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:18:18.965,=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:23:46.382,=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:24:06.256,C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\view\uFrmCadastroUsuarios.dfm=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.dfm</Transaction>
+    <Transaction>2013/10/19 21:24:06.256,C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\view\uFrmCadastroUsuarios.pas=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:27:03.114,=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
+    <Transaction>2013/10/19 21:27:13.087,C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\classes\uFuncoes.pas=C:\Users\thiago-pc\Documents\GitHub\sisfinanceiro_delphi_mysql\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

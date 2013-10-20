@@ -1,169 +1,103 @@
-object frmCadastroBasico: TfrmCadastroBasico
-  Left = 0
-  Top = 0
-  BorderIcons = [biSystemMenu]
-  Caption = 'Cadastro'
-  ClientHeight = 477
-  ClientWidth = 786
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  KeyPreview = True
-  OldCreateOrder = False
-  Position = poScreenCenter
-  OnClose = FormClose
-  OnKeyPress = FormKeyPress
-  OnShow = FormShow
+inherited frmCadastroUsuarios: TfrmCadastroUsuarios
+  Caption = 'Cadastro de Usu'#225'rios'
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
-    Left = 0
-    Top = 409
-    Width = 786
-    Height = 49
-    Align = alBottom
-    TabOrder = 0
-    object SpeedButton1: TSpeedButton
-      Left = 4
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acInserir
-      Flat = True
-    end
-    object SpeedButton2: TSpeedButton
-      Left = 91
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acEditar
-      Flat = True
-    end
-    object SpeedButton3: TSpeedButton
-      Left = 178
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acExcluir
-      Flat = True
-    end
-    object SpeedButton4: TSpeedButton
-      Left = 265
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acSalvar
-      Flat = True
-    end
-    object SpeedButton5: TSpeedButton
-      Left = 352
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acCancelar
-      Flat = True
-    end
-    object SpeedButton6: TSpeedButton
-      Left = 439
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acPesquisar
-      Flat = True
-    end
-    object SpeedButton7: TSpeedButton
-      Left = 526
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acImprimir
-      Flat = True
-    end
-    object SpeedButton8: TSpeedButton
-      Left = 613
-      Top = 3
-      Width = 89
-      Height = 40
-      Action = acFechar
-      Flat = True
-    end
-  end
-  object PageControl1: TPageControl
-    Left = 0
-    Top = 0
-    Width = 786
-    Height = 409
-    ActivePage = tbsCadastro
-    Align = alClient
-    TabOrder = 1
-    object tbsCadastro: TTabSheet
-      Caption = 'Cadastro'
-    end
-    object tbsPesquisar: TTabSheet
-      Caption = 'Pesquisar'
-      ImageIndex = 1
-      object Label1: TLabel
-        Left = 5
-        Top = 6
-        Width = 50
+  inherited PageControl1: TPageControl
+    inherited tbsCadastro: TTabSheet
+      ExplicitLeft = 8
+      ExplicitTop = 25
+      object Label2: TLabel
+        Left = 16
+        Top = 78
+        Width = 34
         Height = 13
-        Caption = 'Pesquisar:'
+        Caption = 'Senha:'
       end
-      object dbgDados: TDBGrid
-        Left = 0
-        Top = 64
-        Width = 778
-        Height = 317
-        Align = alBottom
-        DataSource = dsTabela
-        DrawingStyle = gdsGradient
-        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
+      object Label3: TLabel
+        Left = 16
+        Top = 51
+        Width = 29
+        Height = 13
+        Caption = 'Login:'
       end
-      object edtPesquisar: TEdit
-        Left = 5
-        Top = 25
-        Width = 364
+      object Label4: TLabel
+        Left = 16
+        Top = 24
+        Width = 31
+        Height = 13
+        Caption = 'Nome:'
+      end
+      object edtNome: TEdit
+        Left = 80
+        Top = 21
+        Width = 289
         Height = 21
+        MaxLength = 50
+        TabOrder = 0
+      end
+      object edtLogin: TEdit
+        Left = 80
+        Top = 48
+        Width = 289
+        Height = 21
+        MaxLength = 20
         TabOrder = 1
       end
-      object btnFiltrar: TBitBtn
-        Left = 375
-        Top = 23
-        Width = 75
-        Height = 25
-        Caption = 'Filtrar'
+      object edtSenha: TEdit
+        Left = 80
+        Top = 75
+        Width = 289
+        Height = 21
+        MaxLength = 20
+        PasswordChar = '*'
         TabOrder = 2
       end
     end
+    inherited tbsPesquisar: TTabSheet
+      inherited dbgDados: TDBGrid
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'id'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Width = 379
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'login'
+            Width = 201
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'senha'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'status'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'dt_cadastro'
+            Width = 109
+            Visible = True
+          end>
+      end
+    end
   end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Top = 458
-    Width = 786
-    Height = 19
-    Panels = <>
+  inherited dsTabela: TDataSource
+    DataSet = DmDados.cdsUsuarios
   end
-  object dsTabela: TDataSource
-    DataSet = DmDados.cdsCaixa
-    Left = 728
-    Top = 32
-  end
-  object ImageListCadastro: TImageList
-    Height = 32
-    Width = 32
-    Left = 452
-    Top = 216
+  inherited ImageListCadastro: TImageList
     Bitmap = {
-      494C0101090018001C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109001800200020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1753,64 +1687,5 @@ object frmCadastroBasico: TfrmCadastroBasico
       C00003FFC00003FFC00003FFC00003FFF0000FFFF0000FFFF0000FFFF0000FFF
       FC003FFFFC003FFFFC003FFFFC003FFF00000000000000000000000000000000
       000000000000}
-  end
-  object ActAcoes: TActionList
-    Images = ImageListCadastro
-    Left = 452
-    Top = 152
-    object acInserir: TAction
-      Caption = '&Inserir'
-      ImageIndex = 1
-      ShortCut = 16457
-      OnExecute = acInserirExecute
-      OnUpdate = acInserirUpdate
-    end
-    object acEditar: TAction
-      Caption = '&Editar'
-      ImageIndex = 3
-      ShortCut = 16453
-      OnExecute = acEditarExecute
-      OnUpdate = acEditarUpdate
-    end
-    object acExcluir: TAction
-      Caption = 'E&xcluir'
-      ImageIndex = 4
-      ShortCut = 16452
-      OnExecute = acExcluirExecute
-      OnUpdate = acExcluirUpdate
-    end
-    object acSalvar: TAction
-      Caption = '&Salvar'
-      ImageIndex = 7
-      ShortCut = 16467
-      OnExecute = acSalvarExecute
-      OnUpdate = acSalvarUpdate
-    end
-    object acCancelar: TAction
-      Caption = '&Cancelar'
-      ImageIndex = 5
-      ShortCut = 16451
-      OnExecute = acCancelarExecute
-      OnUpdate = acCancelarUpdate
-    end
-    object acPesquisar: TAction
-      Caption = '&Pesquisar'
-      ImageIndex = 0
-      ShortCut = 16464
-      OnExecute = acPesquisarExecute
-    end
-    object acImprimir: TAction
-      Caption = '&Imprimir'
-      ImageIndex = 6
-      ShortCut = 16457
-      OnExecute = acImprimirExecute
-      OnUpdate = acImprimirUpdate
-    end
-    object acFechar: TAction
-      Caption = '&Fechar'
-      ImageIndex = 8
-      ShortCut = 16454
-      OnExecute = acFecharExecute
-    end
   end
 end

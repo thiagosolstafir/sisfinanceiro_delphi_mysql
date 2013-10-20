@@ -31,6 +31,7 @@ type
     Button1: TButton;
     procedure TimerTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure imgUsuariosClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
@@ -45,16 +46,11 @@ implementation
 
 {$R *.dfm}
 
-uses uFrmCadastroBasico;
+uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
-  frmCadastroBasico := TfrmCadastroBasico.Create(nil);
-  try
-    frmCadastroBasico.ShowModal;
-  finally
-    FreeAndNil(frmCadastroBasico);
-  end;
+  CriarForm(TfrmCadastroBasico, frmCadastroBasico);
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -63,6 +59,11 @@ begin
     Application.Terminate
   else
     Abort;
+end;
+
+procedure TfrmPrincipal.imgUsuariosClick(Sender: TObject);
+begin
+  CriarForm(TfrmCadastroUsuarios, frmCadastroUsuarios);
 end;
 
 procedure TfrmPrincipal.TimerTimer(Sender: TObject);

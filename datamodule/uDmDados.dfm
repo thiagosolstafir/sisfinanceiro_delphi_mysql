@@ -221,15 +221,18 @@ object DmDados: TDmDados
     Left = 272
     Top = 296
     object cdsUsuariosid: TIntegerField
+      AutoGenerateValue = arDefault
       FieldName = 'id'
       Required = True
     end
     object cdsUsuariosnome: TStringField
+      DisplayLabel = 'Nome:'
       FieldName = 'nome'
       Required = True
       Size = 50
     end
     object cdsUsuarioslogin: TStringField
+      DisplayLabel = 'Login:'
       FieldName = 'login'
       Required = True
     end
@@ -244,6 +247,7 @@ object DmDados: TDmDados
       Size = 1
     end
     object cdsUsuariosdt_cadastro: TDateField
+      DisplayLabel = 'Data de Cadastro:'
       FieldName = 'dt_cadastro'
       Required = True
     end

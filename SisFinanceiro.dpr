@@ -6,14 +6,15 @@ uses
   uDmDados in 'datamodule\uDmDados.pas' {DmDados: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  uFrmCadastroBasico in 'view\uFrmCadastroBasico.pas' {frmCadastroBasico};
+  uFrmCadastroBasico in 'view\uFrmCadastroBasico.pas' {frmCadastroBasico},
+  uFrmCadastroUsuarios in 'view\uFrmCadastroUsuarios.pas' {frmCadastroUsuarios},
+  uFuncoes in 'classes\uFuncoes.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Metropolis UI Blue');
   Application.CreateForm(TDmDados, DmDados);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
