@@ -48,35 +48,43 @@ object DmDados: TDmDados
     Left = 272
     Top = 96
     object cdsCaixaid: TIntegerField
+      DisplayLabel = 'Id:'
       FieldName = 'id'
       Required = True
     end
     object cdsCaixanumero_doc: TStringField
+      DisplayLabel = 'N'#250'mero do Doc:'
       FieldName = 'numero_doc'
       Required = True
     end
     object cdsCaixadescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o:'
       FieldName = 'descricao'
       Size = 200
     end
     object cdsCaixavalor: TFMTBCDField
+      DisplayLabel = 'Valor:'
       FieldName = 'valor'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsCaixatipo: TStringField
+      DisplayLabel = 'Tipo:'
       FieldName = 'tipo'
       Required = True
       FixedChar = True
       Size = 1
     end
     object cdsCaixadt_cadastro: TDateField
+      DisplayLabel = 'Data:'
       FieldName = 'dt_cadastro'
     end
   end
   object dspCaixa: TDataSetProvider
     DataSet = sdsCaixa
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 160
     Top = 96
   end
@@ -144,6 +152,7 @@ object DmDados: TDmDados
   end
   object dspContas_pagar: TDataSetProvider
     DataSet = sdsContas_pagar
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 160
     Top = 160
   end
@@ -211,6 +220,7 @@ object DmDados: TDmDados
   end
   object dspContas_receber: TDataSetProvider
     DataSet = sdsContas_receber
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 160
     Top = 232
   end
@@ -254,6 +264,7 @@ object DmDados: TDmDados
   end
   object dspUsuarios: TDataSetProvider
     DataSet = sdsUsuarios
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 160
     Top = 296
   end

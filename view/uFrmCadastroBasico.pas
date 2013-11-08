@@ -39,6 +39,8 @@ type
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
     SpeedButton8: TSpeedButton;
+    cbxFiltros: TComboBox;
+    Label5: TLabel;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -47,7 +49,6 @@ type
     procedure acExcluirExecute(Sender: TObject);
     procedure acSalvarExecute(Sender: TObject);
     procedure acCancelarExecute(Sender: TObject);
-    procedure acPesquisarExecute(Sender: TObject);
     procedure acImprimirExecute(Sender: TObject);
     procedure acFecharExecute(Sender: TObject);
     procedure acInserirUpdate(Sender: TObject);
@@ -56,6 +57,9 @@ type
     procedure acSalvarUpdate(Sender: TObject);
     procedure acCancelarUpdate(Sender: TObject);
     procedure acImprimirUpdate(Sender: TObject);
+    procedure acPesquisarExecute(Sender: TObject);
+    procedure dbgDadosDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
     iModo : Integer;
@@ -71,7 +75,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmDados;
+uses uDmDados, uFuncoes;
 
 procedure TfrmCadastroBasico.acCancelarExecute(Sender: TObject);
 begin
@@ -88,13 +92,17 @@ procedure TfrmCadastroBasico.acEditarExecute(Sender: TObject);
 begin
   iModo := 1;
   if PageControl1.ActivePage = tbsPesquisar then
+  begin
+    tbsCadastro.TabVisible  := true;
+    tbsPesquisar.TabVisible := false;
     PageControl1.ActivePage := tbsCadastro;
+  end;
   TClientDataSet(dsTabela.DataSet).Edit;
 end;
 
 procedure TfrmCadastroBasico.acEditarUpdate(Sender: TObject);
 begin
-  if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+  if not TClientDataSet(dsTabela.DataSet).IsEmpty then
     acEditar.Enabled := dsTabela.State in [dsBrowse];
 end;
 
@@ -115,7 +123,7 @@ end;
 
 procedure TfrmCadastroBasico.acExcluirUpdate(Sender: TObject);
 begin
-  if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+  if not TClientDataSet(dsTabela.DataSet).IsEmpty then
     acExcluir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
@@ -131,7 +139,7 @@ end;
 
 procedure TfrmCadastroBasico.acImprimirUpdate(Sender: TObject);
 begin
-  if (dsTabela.State in [dsBrowse]) and (not TClientDataSet(dsTabela.DataSet).IsEmpty) then
+  if not TClientDataSet(dsTabela.DataSet).IsEmpty then
     acImprimir.Enabled := dsTabela.State in [dsBrowse];
 end;
 
@@ -139,7 +147,11 @@ procedure TfrmCadastroBasico.acInserirExecute(Sender: TObject);
 begin
   iModo := 0;
   if PageControl1.ActivePage = tbsPesquisar then
+  begin
+    tbsCadastro.TabVisible  := true;
+    tbsPesquisar.TabVisible := false;
     PageControl1.ActivePage := tbsCadastro;
+  end;
   if not TClientDataSet(dsTabela.DataSet).Active then
     TClientDataSet(dsTabela.DataSet).Open;
   TClientDataSet(dsTabela.DataSet).Insert;
@@ -152,8 +164,7 @@ end;
 
 procedure TfrmCadastroBasico.acPesquisarExecute(Sender: TObject);
 begin
-  TClientDataSet(dsTabela.DataSet).Close;
-  TClientDataSet(dsTabela.DataSet).Open;
+  edtPesquisar.Clear;
 end;
 
 procedure TfrmCadastroBasico.acSalvarExecute(Sender: TObject);
@@ -177,6 +188,12 @@ end;
 procedure TfrmCadastroBasico.acSalvarUpdate(Sender: TObject);
 begin
   acSalvar.Enabled := dsTabela.State in [dsInsert,dsEdit];
+end;
+
+procedure TfrmCadastroBasico.dbgDadosDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  ZebrarDBGrid(dsTabela,dbgDados,State,Rect,Column);
 end;
 
 procedure TfrmCadastroBasico.FormClose(Sender: TObject;
@@ -209,7 +226,12 @@ begin
       TCustomEdit(Components[i]).Clear;
   end;
   if PageControl1.ActivePage = tbsCadastro then
+  begin
+    tbsCadastro.TabVisible  := false;
+    tbsPesquisar.TabVisible := true;
     PageControl1.ActivePage := tbsPesquisar;
+  end;
+  edtPesquisar.SetFocus;
 end;
 
 end.

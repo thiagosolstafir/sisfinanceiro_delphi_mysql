@@ -8,7 +8,8 @@ uses
   Vcl.Styles,
   uFrmCadastroBasico in 'view\uFrmCadastroBasico.pas' {frmCadastroBasico},
   uFrmCadastroUsuarios in 'view\uFrmCadastroUsuarios.pas' {frmCadastroUsuarios},
-  uFuncoes in 'classes\uFuncoes.pas';
+  uFuncoes in 'classes\uFuncoes.pas',
+  uFrmCadastroCaixa in 'view\uFrmCadastroCaixa.pas' {frmCadastroCaixa};
 
 {$R *.res}
 

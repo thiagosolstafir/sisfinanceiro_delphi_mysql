@@ -17,6 +17,9 @@ type
     edtLogin: TEdit;
     edtSenha: TEdit;
     procedure acSalvarExecute(Sender: TObject);
+    procedure acEditarExecute(Sender: TObject);
+    procedure btnFiltrarClick(Sender: TObject);
+    procedure acPesquisarExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +35,25 @@ implementation
 
 uses uDmDados, uFuncoes;
 
+procedure TfrmCadastroUsuarios.acEditarExecute(Sender: TObject);
+begin
+  inherited;
+  edtNome.Text  := DmDados.cdsUsuariosnome.AsString;
+  edtLogin.Text := DmDados.cdsUsuarioslogin.AsString;
+  edtSenha.Text := DmDados.cdsUsuariossenha.AsString;
+end;
+
+procedure TfrmCadastroUsuarios.acPesquisarExecute(Sender: TObject);
+begin
+  inherited;
+  with DmDados do
+  begin
+    DmDados.cdsUsuarios.Close;
+    DmDados.cdsUsuarios.CommandText := 'SELECT * FROM USUARIOS';
+    DmDados.cdsUsuarios.Open;
+  end;
+end;
+
 procedure TfrmCadastroUsuarios.acSalvarExecute(Sender: TObject);
 begin
   if Trim(edtNome.Text) = '' then
@@ -46,7 +68,7 @@ begin
     edtLogin.SetFocus;
     Abort;
   end;
-  if GetLoginCadastrado(trim(edtLogin.Text)) then
+  if (dsTabela.State in [dsInsert]) and (GetLoginCadastrado(trim(edtLogin.Text))) then
   begin
     Application.MessageBox('Login encontra-se cadastrado.','Atenção',MB_OK+MB_ICONWARNING);
     edtLogin.SetFocus;
@@ -60,7 +82,8 @@ begin
   end;
   with DmDados do
   begin
-    cdsUsuariosid.AsInteger           := GetId('ID','USUARIOS');
+    if dsTabela.State in [dsInsert] then
+      cdsUsuariosid.AsInteger         := GetId('ID','USUARIOS');
     cdsUsuariosnome.AsString          := trim(edtNome.Text);
     cdsUsuarioslogin.AsString         := trim(edtLogin.Text);
     cdsUsuariossenha.AsString         := trim(edtSenha.Text);
@@ -68,6 +91,25 @@ begin
     cdsUsuariosdt_cadastro.AsDateTime := now;
   end;
   inherited;
+end;
+
+procedure TfrmCadastroUsuarios.btnFiltrarClick(Sender: TObject);
+begin
+  if edtPesquisar.Text = '' then
+  begin
+    Application.MessageBox('Informe um valor a ser pesquisado ou clique em Pesquisar.','Atenção',MB_OK+MB_ICONWARNING);
+    edtPesquisar.SetFocus;
+    Abort;
+  end;
+  with DmDados do
+  begin
+    cdsUsuarios.Close;
+    case cbxFiltros.ItemIndex of
+      0 : cdsUsuarios.CommandText := 'SELECT * FROM USUARIOS WHERE NOME  LIKE '+QuotedStr('%'+edtPesquisar.Text+'%');
+      1 : cdsUsuarios.CommandText := 'SELECT * FROM USUARIOS WHERE LOGIN LIKE '+QuotedStr('%'+edtPesquisar.Text+'%');
+    end;
+    cdsUsuarios.Open;
+  end;
 end;
 
 end.

@@ -1,64 +1,89 @@
-inherited frmCadastroUsuarios: TfrmCadastroUsuarios
-  Caption = 'Cadastro de Usu'#225'rios'
-  ExplicitWidth = 802
-  ExplicitHeight = 516
+inherited frmCadastroCaixa: TfrmCadastroCaixa
+  Caption = 'Lan'#231'amentos no Caixa'
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = tbsCadastro
     inherited tbsCadastro: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 778
-      ExplicitHeight = 381
       object Label2: TLabel
         Left = 16
-        Top = 78
-        Width = 34
+        Top = 16
+        Width = 112
         Height = 13
-        Caption = 'Senha:'
-      end
-      object Label3: TLabel
-        Left = 16
-        Top = 51
-        Width = 29
-        Height = 13
-        Caption = 'Login:'
+        Caption = 'N'#250'mero do documento:'
       end
       object Label4: TLabel
         Left = 16
-        Top = 24
-        Width = 31
+        Top = 43
+        Width = 50
         Height = 13
-        Caption = 'Nome:'
+        Caption = 'Descri'#231#227'o:'
       end
-      object edtNome: TEdit
-        Left = 80
-        Top = 21
-        Width = 289
+      object Label6: TLabel
+        Left = 16
+        Top = 70
+        Width = 28
+        Height = 13
+        Caption = 'Valor:'
+      end
+      object edtDocumento: TEdit
+        Left = 134
+        Top = 13
+        Width = 227
         Height = 21
-        MaxLength = 50
+        MaxLength = 20
         TabOrder = 0
       end
-      object edtLogin: TEdit
-        Left = 80
-        Top = 48
-        Width = 289
+      object edtDescricao: TEdit
+        Left = 134
+        Top = 40
+        Width = 390
         Height = 21
-        MaxLength = 20
+        MaxLength = 200
         TabOrder = 1
       end
-      object edtSenha: TEdit
-        Left = 80
-        Top = 75
-        Width = 289
+      object RadioGroup1: TRadioGroup
+        Left = 16
+        Top = 104
+        Width = 239
+        Height = 49
+        Caption = 'Tipo:'
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          'Cr'#233'dito'
+          'D'#233'bito')
+        TabOrder = 3
+      end
+      object edtValor: TtpEdit
+        Left = 134
+        Top = 67
+        Width = 121
         Height = 21
-        MaxLength = 20
-        PasswordChar = '*'
+        Alignment = taRightJustify
+        CharCase = ecUpperCase
         TabOrder = 2
+        Text = '0,00'
+        Caracter = tcReal
       end
     end
     inherited tbsPesquisar: TTabSheet
+      object Label3: TLabel [2]
+        Left = 0
+        Top = 56
+        Width = 236
+        Height = 13
+        Caption = '* Legenda (Tipo): C = Cr'#233'dito / D = D'#233'bito'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold, fsItalic]
+        ParentFont = False
+      end
       inherited dbgDados: TDBGrid
+        Top = 80
+        Height = 301
         Columns = <
           item
             Expanded = False
@@ -67,30 +92,30 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
           end
           item
             Expanded = False
-            FieldName = 'nome'
-            Width = 379
+            FieldName = 'numero_doc'
+            Width = 90
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'login'
-            Width = 201
+            FieldName = 'descricao'
+            Width = 365
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'senha'
-            Visible = False
+            FieldName = 'valor'
+            Visible = True
           end
           item
             Expanded = False
-            FieldName = 'status'
-            Visible = False
+            FieldName = 'tipo'
+            Width = 40
+            Visible = True
           end
           item
             Expanded = False
             FieldName = 'dt_cadastro'
-            Width = 109
             Visible = True
           end>
       end
@@ -99,19 +124,16 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
       end
       inherited cbxFiltros: TComboBox
         ItemIndex = 0
-        Text = 'Nome'
+        Text = 'Documento'
         Items.Strings = (
-          'Nome'
-          'Login')
+          'Documento'
+          'Descri'#231#227'o')
       end
     end
   end
-  inherited dsTabela: TDataSource
-    DataSet = DmDados.cdsUsuarios
-  end
   inherited ImageListCadastro: TImageList
     Bitmap = {
-      494C0101090018002C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109001800300020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

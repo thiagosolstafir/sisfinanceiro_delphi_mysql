@@ -33,6 +33,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure imgUsuariosClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure imgCaixaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +47,7 @@ implementation
 
 {$R *.dfm}
 
-uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes;
+uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes, uFrmCadastroCaixa;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
@@ -59,6 +60,11 @@ begin
     Application.Terminate
   else
     Abort;
+end;
+
+procedure TfrmPrincipal.imgCaixaClick(Sender: TObject);
+begin
+  CriarForm(TfrmCadastroCaixa, frmCadastroCaixa);
 end;
 
 procedure TfrmPrincipal.imgUsuariosClick(Sender: TObject);

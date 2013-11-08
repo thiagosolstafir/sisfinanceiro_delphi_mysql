@@ -96,21 +96,29 @@ object frmCadastroBasico: TfrmCadastroBasico
     Top = 0
     Width = 786
     Height = 409
-    ActivePage = tbsCadastro
+    ActivePage = tbsPesquisar
     Align = alClient
     TabOrder = 1
     object tbsCadastro: TTabSheet
       Caption = 'Cadastro'
+      TabVisible = False
     end
     object tbsPesquisar: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
       object Label1: TLabel
-        Left = 5
+        Left = 205
         Top = 6
         Width = 50
         Height = 13
         Caption = 'Pesquisar:'
+      end
+      object Label5: TLabel
+        Left = 0
+        Top = 6
+        Width = 33
+        Height = 13
+        Caption = 'Filtros:'
       end
       object dbgDados: TDBGrid
         Left = 0
@@ -127,21 +135,30 @@ object frmCadastroBasico: TfrmCadastroBasico
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDrawColumnCell = dbgDadosDrawColumnCell
       end
       object edtPesquisar: TEdit
-        Left = 5
+        Left = 205
         Top = 25
         Width = 364
         Height = 21
         TabOrder = 1
       end
       object btnFiltrar: TBitBtn
-        Left = 375
+        Left = 575
         Top = 23
         Width = 75
         Height = 25
         Caption = 'Filtrar'
         TabOrder = 2
+      end
+      object cbxFiltros: TComboBox
+        Left = 0
+        Top = 25
+        Width = 199
+        Height = 21
+        Style = csDropDownList
+        TabOrder = 3
       end
     end
   end
@@ -163,7 +180,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Left = 452
     Top = 216
     Bitmap = {
-      494C0101090018001C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109001800280020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1760,6 +1777,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     Top = 152
     object acInserir: TAction
       Caption = '&Inserir'
+      Enabled = False
       ImageIndex = 1
       ShortCut = 16457
       OnExecute = acInserirExecute
@@ -1767,6 +1785,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     end
     object acEditar: TAction
       Caption = '&Editar'
+      Enabled = False
       ImageIndex = 3
       ShortCut = 16453
       OnExecute = acEditarExecute
@@ -1774,6 +1793,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     end
     object acExcluir: TAction
       Caption = 'E&xcluir'
+      Enabled = False
       ImageIndex = 4
       ShortCut = 16452
       OnExecute = acExcluirExecute
@@ -1781,6 +1801,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     end
     object acSalvar: TAction
       Caption = '&Salvar'
+      Enabled = False
       ImageIndex = 7
       ShortCut = 16467
       OnExecute = acSalvarExecute
@@ -1788,6 +1809,7 @@ object frmCadastroBasico: TfrmCadastroBasico
     end
     object acCancelar: TAction
       Caption = '&Cancelar'
+      Enabled = False
       ImageIndex = 5
       ShortCut = 16451
       OnExecute = acCancelarExecute
