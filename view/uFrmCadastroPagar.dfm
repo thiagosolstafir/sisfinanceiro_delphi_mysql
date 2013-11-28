@@ -2,13 +2,15 @@ inherited frmCadastroPagar: TfrmCadastroPagar
   Caption = 'Cadastro de Contas a Pagar'
   PixelsPerInch = 96
   TextHeight = 13
+  inherited Panel1: TPanel
+    inherited SpeedButton2: TSpeedButton
+      Width = 97
+      Visible = False
+      ExplicitWidth = 97
+    end
+  end
   inherited PageControl1: TPageControl
-    ActivePage = tbsCadastro
     inherited tbsCadastro: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 22
-      ExplicitWidth = 778
-      ExplicitHeight = 381
       object Label2: TLabel
         Left = 16
         Top = 16
@@ -82,9 +84,10 @@ inherited frmCadastroPagar: TfrmCadastroPagar
         Height = 21
         Alignment = taRightJustify
         CharCase = ecUpperCase
-        TabOrder = 3
+        TabOrder = 4
         Text = '0,00'
         Caracter = tcReal
+        UF = '[Only for Check = ckIe ]'
       end
       object edtDtCompra: TtpEdit
         Left = 95
@@ -94,9 +97,10 @@ inherited frmCadastroPagar: TfrmCadastroPagar
         Alignment = taRightJustify
         CharCase = ecUpperCase
         MaxLength = 8
-        TabOrder = 4
+        TabOrder = 5
         Check = ckDate
         Caracter = tcNumeric
+        UF = '[Only for Check = ckIe ]'
       end
       object edtVariacao: TEdit
         Left = 241
@@ -104,7 +108,7 @@ inherited frmCadastroPagar: TfrmCadastroPagar
         Width = 89
         Height = 21
         NumbersOnly = True
-        TabOrder = 5
+        TabOrder = 3
       end
       object Button1: TButton
         Left = 95
@@ -123,12 +127,13 @@ inherited frmCadastroPagar: TfrmCadastroPagar
         DataSource = dsParcelas
         DrawingStyle = gdsGradient
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        TabOrder = 7
+        TabOrder = 8
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDrawColumnCell = DBGrid1DrawColumnCell
         Columns = <
           item
             Expanded = False
@@ -154,16 +159,36 @@ inherited frmCadastroPagar: TfrmCadastroPagar
         Width = 106
         Height = 25
         Caption = 'Limpar parcelas'
-        TabOrder = 8
+        TabOrder = 7
         OnClick = Button2Click
       end
     end
     inherited tbsPesquisar: TTabSheet
+      object Label9: TLabel [2]
+        Left = 0
+        Top = 52
+        Width = 347
+        Height = 13
+        Caption = '* Legenda (Status): A = Aberto / C = Cancelado / B = Baixado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold, fsItalic]
+        ParentFont = False
+      end
       inherited dbgDados: TDBGrid
+        Top = 72
+        Height = 309
         Columns = <
           item
             Expanded = False
             FieldName = 'id'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'status'
             Visible = True
           end
           item
@@ -216,12 +241,10 @@ inherited frmCadastroPagar: TfrmCadastroPagar
             Expanded = False
             FieldName = 'dt_pagamento'
             Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'status'
-            Visible = True
           end>
+      end
+      inherited btnFiltrar: TBitBtn
+        OnClick = btnFiltrarClick
       end
       inherited cbxFiltros: TComboBox
         ItemIndex = 0
@@ -239,7 +262,7 @@ inherited frmCadastroPagar: TfrmCadastroPagar
     Left = 724
     Top = 96
     Bitmap = {
-      494C010109001800300020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109001800380020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

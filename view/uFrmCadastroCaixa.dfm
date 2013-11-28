@@ -1,16 +1,16 @@
 inherited frmCadastroCaixa: TfrmCadastroCaixa
   Caption = 'Lan'#231'amentos no Caixa'
-  ExplicitWidth = 802
-  ExplicitHeight = 516
   PixelsPerInch = 96
   TextHeight = 13
+  inherited Panel1: TPanel
+    inherited SpeedButton2: TSpeedButton
+      Top = 2
+      ExplicitTop = 2
+    end
+  end
   inherited PageControl1: TPageControl
     ActivePage = tbsCadastro
     inherited tbsCadastro: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 778
-      ExplicitHeight = 381
       object Label2: TLabel
         Left = 16
         Top = 16
@@ -71,6 +71,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
         TabOrder = 2
         Text = '0,00'
         Caracter = tcReal
+        UF = '[Only for Check = ckIe ]'
       end
     end
     inherited tbsPesquisar: TTabSheet
@@ -139,7 +140,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   end
   inherited ImageListCadastro: TImageList
     Bitmap = {
-      494C010109001800340020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101090018003C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
