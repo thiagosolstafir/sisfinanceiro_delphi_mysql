@@ -35,6 +35,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure imgCaixaClick(Sender: TObject);
     procedure imgPagarClick(Sender: TObject);
+    procedure imgReceberClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +50,7 @@ implementation
 {$R *.dfm}
 
 uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes, uFrmCadastroCaixa,
-  uFrmCadastroPagar;
+  uFrmCadastroPagar, uFrmCadastroReceber;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
@@ -72,6 +73,11 @@ end;
 procedure TfrmPrincipal.imgPagarClick(Sender: TObject);
 begin
   CriarForm(TfrmCadastroPagar, frmCadastroPagar);
+end;
+
+procedure TfrmPrincipal.imgReceberClick(Sender: TObject);
+begin
+  CriarForm(TfrmCadastroReceber,frmCadastroReceber);
 end;
 
 procedure TfrmPrincipal.imgUsuariosClick(Sender: TObject);

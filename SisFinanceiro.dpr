@@ -10,7 +10,8 @@ uses
   uFrmCadastroUsuarios in 'view\uFrmCadastroUsuarios.pas' {frmCadastroUsuarios},
   uFuncoes in 'classes\uFuncoes.pas',
   uFrmCadastroCaixa in 'view\uFrmCadastroCaixa.pas' {frmCadastroCaixa},
-  uFrmCadastroPagar in 'view\uFrmCadastroPagar.pas' {frmCadastroPagar};
+  uFrmCadastroPagar in 'view\uFrmCadastroPagar.pas' {frmCadastroPagar},
+  uFrmCadastroReceber in 'view\uFrmCadastroReceber.pas' {frmCadastroReceber};
 
 {$R *.res}
 

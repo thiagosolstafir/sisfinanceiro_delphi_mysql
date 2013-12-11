@@ -1,15 +1,9 @@
-inherited frmCadastroPagar: TfrmCadastroPagar
-  Caption = 'Cadastro de Contas a Pagar'
+inherited frmCadastroReceber: TfrmCadastroReceber
+  Caption = 'Cadastro de Contas a Receber'
   PixelsPerInch = 96
   TextHeight = 13
-  inherited Panel1: TPanel
-    inherited SpeedButton2: TSpeedButton
-      Width = 97
-      Visible = False
-      ExplicitWidth = 97
-    end
-  end
   inherited PageControl1: TPageControl
+    ActivePage = tbsCadastro
     inherited tbsCadastro: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -170,7 +164,7 @@ inherited frmCadastroPagar: TfrmCadastroPagar
     inherited tbsPesquisar: TTabSheet
       object Label9: TLabel [2]
         Left = 0
-        Top = 52
+        Top = 48
         Width = 347
         Height = 13
         Caption = '* Legenda (Status): A = Aberto / C = Cancelado / B = Baixado'
@@ -182,8 +176,6 @@ inherited frmCadastroPagar: TfrmCadastroPagar
         ParentFont = False
       end
       inherited dbgDados: TDBGrid
-        Top = 72
-        Height = 309
         Columns = <
           item
             Expanded = False
@@ -197,7 +189,7 @@ inherited frmCadastroPagar: TfrmCadastroPagar
           end
           item
             Expanded = False
-            FieldName = 'numero_doc'
+            FieldName = 'documento'
             Visible = True
           end
           item
@@ -233,12 +225,12 @@ inherited frmCadastroPagar: TfrmCadastroPagar
           end
           item
             Expanded = False
-            FieldName = 'dt_cadastro'
+            FieldName = 'dt_vencimento'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'dt_vencimento'
+            FieldName = 'dt_cadastro'
             Visible = True
           end
           item
@@ -260,13 +252,11 @@ inherited frmCadastroPagar: TfrmCadastroPagar
     end
   end
   inherited dsTabela: TDataSource
-    DataSet = DmDados.cdsContas_pagar
+    DataSet = DmDados.cdsContas_receber
   end
   inherited ImageListCadastro: TImageList
-    Left = 724
-    Top = 96
     Bitmap = {
-      494C0101090018003C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109001800340020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1857,8 +1847,10 @@ inherited frmCadastroPagar: TfrmCadastroPagar
       FC003FFFFC003FFFFC003FFFFC003FFF00000000000000000000000000000000
       000000000000}
   end
-  inherited ActAcoes: TActionList
+  object dsParcelas: TDataSource
+    DataSet = cdsParcelas
     Left = 724
+    Top = 264
   end
   object cdsParcelas: TClientDataSet
     Active = True
@@ -1880,10 +1872,5 @@ inherited frmCadastroPagar: TfrmCadastroPagar
     object cdsParcelasVencimento: TDateField
       FieldName = 'Vencimento'
     end
-  end
-  object dsParcelas: TDataSource
-    DataSet = cdsParcelas
-    Left = 724
-    Top = 264
   end
 end

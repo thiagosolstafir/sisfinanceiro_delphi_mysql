@@ -178,58 +178,73 @@ object DmDados: TDmDados
     Left = 272
     Top = 232
     object cdsContas_receberid: TIntegerField
+      DisplayLabel = 'Id:'
       FieldName = 'id'
       Required = True
     end
     object cdsContas_receberdocumento: TStringField
+      DisplayLabel = 'Documento:'
       FieldName = 'documento'
       Required = True
     end
     object cdsContas_receberdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o:'
       FieldName = 'descricao'
       Size = 200
     end
     object cdsContas_receberparcela: TIntegerField
+      DisplayLabel = 'Parcela:'
       FieldName = 'parcela'
       Required = True
     end
     object cdsContas_recebervlr_parcela: TFMTBCDField
+      DisplayLabel = 'Vlr. Parcela:'
       FieldName = 'vlr_parcela'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsContas_recebervlr_compra: TFMTBCDField
+      DisplayLabel = 'Vlr. Compra:'
       FieldName = 'vlr_compra'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsContas_recebervlr_abatido: TFMTBCDField
+      DisplayLabel = 'Vlr. Abatido:'
       FieldName = 'vlr_abatido'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsContas_receberdt_compra: TDateField
+      DisplayLabel = 'Dt. Compra:'
       FieldName = 'dt_compra'
       Required = True
     end
     object cdsContas_receberdt_vencimento: TDateField
+      DisplayLabel = 'Dt. Vencimento:'
       FieldName = 'dt_vencimento'
       Required = True
     end
     object cdsContas_receberdt_cadastro: TDateField
+      DisplayLabel = 'Dt. Cadastro:'
       FieldName = 'dt_cadastro'
       Required = True
     end
     object cdsContas_receberstatus: TStringField
+      DisplayLabel = 'Status:'
       FieldName = 'status'
       Required = True
       FixedChar = True
       Size = 1
     end
     object cdsContas_receberdt_pagamento: TDateField
+      DisplayLabel = 'Dt. Pagamento:'
       FieldName = 'dt_pagamento'
     end
   end
