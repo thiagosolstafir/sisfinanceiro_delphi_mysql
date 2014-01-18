@@ -1,7 +1,7 @@
 object DmDados: TDmDados
   OldCreateOrder = False
   Height = 371
-  Width = 363
+  Width = 597
   object SQLConnection: TSQLConnection
     ConnectionName = 'financeiro'
     DriverName = 'MySQL'
@@ -263,6 +263,7 @@ object DmDados: TDmDados
     object cdsUsuariosid: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsUsuariosnome: TStringField

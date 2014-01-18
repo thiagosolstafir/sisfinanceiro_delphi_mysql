@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, Data.SqlExpr, Data.DBXMySQL,
-  Data.FMTBcd, Datasnap.Provider, Datasnap.DBClient;
+  Data.FMTBcd, Datasnap.Provider, Datasnap.DBClient, ZAbstractConnection,
+  ZConnection, ZAbstractRODataset, ZAbstractDataset, ZAbstractTable, ZDataset;
 
 type
   TDmDados = class(TDataModule)

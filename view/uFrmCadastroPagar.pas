@@ -39,6 +39,7 @@ type
     procedure acPesquisarExecute(Sender: TObject);
     procedure btnFiltrarClick(Sender: TObject);
     procedure acExcluirExecute(Sender: TObject);
+    procedure acImprimirExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,7 +53,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmDados, uFuncoes;
+uses uDmDados, uFuncoes, uDmRelatorios;
 
 procedure TfrmCadastroPagar.acExcluirExecute(Sender: TObject);
 begin
@@ -68,6 +69,17 @@ begin
      raise Exception.Create('Erro ao excluir registro: '+E.Message);
    end;
  end;
+end;
+
+procedure TfrmCadastroPagar.acImprimirExecute(Sender: TObject);
+begin
+  DmRelatorios := TDmRelatorios.Create(nil);
+  try
+    DmRelatorios.frxReport.LoadFromFile(ExtractFilePath(Application.ExeName)+'relatorios\relCadPagar.fr3');
+    DmRelatorios.frxReport.ShowReport();
+  finally
+    FreeAndNil(DmRelatorios);
+  end;
 end;
 
 procedure TfrmCadastroPagar.acPesquisarExecute(Sender: TObject);

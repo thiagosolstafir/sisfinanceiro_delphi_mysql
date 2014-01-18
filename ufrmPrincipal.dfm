@@ -2,8 +2,8 @@
   Left = 0
   Top = 0
   Caption = 'Sistema de Controle Financeiro'
-  ClientHeight = 521
-  ClientWidth = 830
+  ClientHeight = 639
+  ClientWidth = 1087
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1827,13 +1827,15 @@
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 502
-    Width = 830
+    Top = 620
+    Width = 1087
     Height = 19
     Panels = <
       item
         Width = 50
       end>
+    ExplicitTop = 502
+    ExplicitWidth = 830
   end
   object Button1: TButton
     Left = 456
