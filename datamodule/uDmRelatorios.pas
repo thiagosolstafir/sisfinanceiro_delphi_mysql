@@ -14,6 +14,7 @@ type
     frxSimpleTextExport: TfrxSimpleTextExport;
     frxDBDsReceber: TfrxDBDataset;
     frxDBDsPagar: TfrxDBDataset;
+    frxDBDsCaixa: TfrxDBDataset;
   private
     { Private declarations }
   public

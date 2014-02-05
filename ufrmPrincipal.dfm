@@ -909,6 +909,7 @@
       772FE76CF7A7CABCED9C95055BDDB948292DE86C062CEB9DCEBBA4AFBFFE1ACF
       3DF75C56DDFF00345EDCB960A0EA6A0000000049454E44AE426082}
     ShowHint = True
+    OnClick = imgConsReceberClick
   end
   object imgConsPagar: TImage
     Left = 544
@@ -1056,6 +1057,7 @@
       5CCAF5EAA1FFB7E58F1EC0FF018D6B1145964B92B00000000049454E44AE4260
       82}
     ShowHint = True
+    OnClick = imgConsPagarClick
   end
   object Label2: TLabel
     Left = 24
@@ -1834,8 +1836,6 @@
       item
         Width = 50
       end>
-    ExplicitTop = 502
-    ExplicitWidth = 830
   end
   object Button1: TButton
     Left = 456

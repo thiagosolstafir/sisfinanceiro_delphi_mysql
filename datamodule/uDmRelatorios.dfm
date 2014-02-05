@@ -11,7 +11,7 @@ object DmRelatorios: TDmRelatorios
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 41644.961579803200000000
-    ReportOptions.LastChange = 41656.913274803240000000
+    ReportOptions.LastChange = 41674.889554699080000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -22,8 +22,8 @@ object DmRelatorios: TDmRelatorios
     Top = 24
     Datasets = <
       item
-        DataSet = frxDBDsPagar
-        DataSetName = 'Pagar'
+        DataSet = frxDBDsCaixa
+        DataSetName = 'frxDBDataset_Caixa'
       end>
     Variables = <>
     Style = <>
@@ -55,7 +55,7 @@ object DmRelatorios: TDmRelatorios
           Font.Style = [fsBold]
           HAlign = haCenter
           Memo.UTF8W = (
-            'Relat'#243'rio de Contas a Pagar')
+            'Relat'#243'rio de Lan'#231'amentos no Caixa')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -98,74 +98,40 @@ object DmRelatorios: TDmRelatorios
         Height = 22.677180000000000000
         Top = 200.315090000000000000
         Width = 718.110700000000000000
-        DataSet = frxDBDsPagar
-        DataSetName = 'Pagar'
+        DataSet = frxDBDsCaixa
+        DataSetName = 'frxDBDataset_Caixa'
         RowCount = 0
         object frxDBDataset1documento: TfrxMemoView
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           ShowHint = False
           DataField = 'numero_doc'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
+          DataSet = frxDBDsCaixa
+          DataSetName = 'frxDBDataset_Caixa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Pagar."numero_doc"]')
+            '[frxDBDataset_Caixa."numero_doc"]')
           ParentFont = False
         end
         object frxDBDataset1descricao: TfrxMemoView
-          Left = 120.944960000000000000
-          Width = 264.567100000000000000
+          Left = 83.149660000000000000
+          Width = 396.850650000000000000
           Height = 18.897650000000000000
           ShowHint = False
           DataField = 'descricao'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
+          DataSet = frxDBDsCaixa
+          DataSetName = 'frxDBDataset_Caixa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Pagar."descricao"]')
-          ParentFont = False
-        end
-        object frxDBDataset1parcela: TfrxMemoView
-          Left = 79.370130000000000000
-          Width = 37.795300000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'parcela'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[Pagar."parcela"]')
-          ParentFont = False
-        end
-        object frxDBDataset1vlr_parcela: TfrxMemoView
-          Left = 393.071120000000000000
-          Width = 86.929190000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'vlr_parcela'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[Pagar."vlr_parcela"]')
+            '[frxDBDataset_Caixa."descricao"]')
           ParentFont = False
         end
         object frxDBDataset1vlr_compra: TfrxMemoView
@@ -173,16 +139,16 @@ object DmRelatorios: TDmRelatorios
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           ShowHint = False
-          DataField = 'vlr_compra'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
+          DataField = 'valor'
+          DataSet = frxDBDsCaixa
+          DataSetName = 'frxDBDataset_Caixa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Pagar."vlr_compra"]')
+            '[frxDBDataset_Caixa."valor"]')
           ParentFont = False
         end
         object frxDBDataset1dt_vencimento: TfrxMemoView
@@ -190,16 +156,16 @@ object DmRelatorios: TDmRelatorios
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           ShowHint = False
-          DataField = 'dt_vencimento'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
+          DataField = 'dt_cadastro'
+          DataSet = frxDBDsCaixa
+          DataSetName = 'frxDBDataset_Caixa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Pagar."dt_vencimento"]')
+            '[frxDBDataset_Caixa."dt_cadastro"]')
           ParentFont = False
         end
         object frxDBDataset1status: TfrxMemoView
@@ -207,16 +173,16 @@ object DmRelatorios: TDmRelatorios
           Width = 26.456710000000000000
           Height = 18.897650000000000000
           ShowHint = False
-          DataField = 'status'
-          DataSet = frxDBDsPagar
-          DataSetName = 'Pagar'
+          DataField = 'tipo'
+          DataSet = frxDBDsCaixa
+          DataSetName = 'frxDBDataset_Caixa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Pagar."status"]')
+            '[frxDBDataset_Caixa."tipo"]')
           ParentFont = False
         end
       end
@@ -251,25 +217,10 @@ object DmRelatorios: TDmRelatorios
           ShowHint = False
           Diagonal = True
         end
-        object Memo4: TfrxMemoView
-          Left = 79.370130000000000000
-          Top = 11.338590000000000000
-          Width = 45.354360000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'Parcela:')
-          ParentFont = False
-        end
         object Memo5: TfrxMemoView
-          Left = 120.944960000000000000
+          Left = 83.149660000000000000
           Top = 11.338590000000000000
-          Width = 264.567100000000000000
+          Width = 396.850650000000000000
           Height = 18.897650000000000000
           ShowHint = False
           Font.Charset = DEFAULT_CHARSET
@@ -279,21 +230,6 @@ object DmRelatorios: TDmRelatorios
           Font.Style = []
           Memo.UTF8W = (
             'Descri'#231#227'o:')
-          ParentFont = False
-        end
-        object Memo6: TfrxMemoView
-          Left = 393.071120000000000000
-          Top = 11.338590000000000000
-          Width = 86.929190000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'Vlr.Parcela:')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
@@ -308,7 +244,7 @@ object DmRelatorios: TDmRelatorios
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            'Vlr.Compra:')
+            'Valor:')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
@@ -323,7 +259,7 @@ object DmRelatorios: TDmRelatorios
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            'Dt.Compra:')
+            'Data:')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
@@ -339,7 +275,7 @@ object DmRelatorios: TDmRelatorios
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Status:')
+            'Tipo:')
           ParentFont = False
         end
       end
@@ -402,7 +338,7 @@ object DmRelatorios: TDmRelatorios
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsItalic]
           Memo.UTF8W = (
-            '* Status: (A = Aberto, B = Baixado, C = Cancelado)')
+            '* Tipo: (C = Cr'#233'dito, D = D'#233'bito)')
           ParentFont = False
         end
       end
@@ -491,5 +427,20 @@ object DmRelatorios: TDmRelatorios
     BCDToCurrency = False
     Left = 47
     Top = 216
+  end
+  object frxDBDsCaixa: TfrxDBDataset
+    UserName = 'frxDBDataset_Caixa'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'id=id'
+      'numero_doc=numero_doc'
+      'descricao=descricao'
+      'valor=valor'
+      'tipo=tipo'
+      'dt_cadastro=dt_cadastro')
+    DataSet = DmDados.cdsCaixa
+    BCDToCurrency = False
+    Left = 176
+    Top = 160
   end
 end

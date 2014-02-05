@@ -12,7 +12,9 @@ uses
   uFrmCadastroCaixa in 'view\uFrmCadastroCaixa.pas' {frmCadastroCaixa},
   uFrmCadastroPagar in 'view\uFrmCadastroPagar.pas' {frmCadastroPagar},
   uFrmCadastroReceber in 'view\uFrmCadastroReceber.pas' {frmCadastroReceber},
-  uDmRelatorios in 'datamodule\uDmRelatorios.pas' {DmRelatorios: TDataModule};
+  uDmRelatorios in 'datamodule\uDmRelatorios.pas' {DmRelatorios: TDataModule},
+  uFrmConsReceber in 'view\uFrmConsReceber.pas' {frmConsReceber},
+  uFrmConsPagar in 'view\uFrmConsPagar.pas' {frmConsPagar};
 
 {$R *.res}
 
@@ -21,5 +23,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmDados, DmDados);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmConsPagar, frmConsPagar);
   Application.Run;
 end.

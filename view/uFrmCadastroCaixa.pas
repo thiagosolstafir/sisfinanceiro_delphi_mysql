@@ -22,6 +22,7 @@ type
     procedure acEditarExecute(Sender: TObject);
     procedure acPesquisarExecute(Sender: TObject);
     procedure btnFiltrarClick(Sender: TObject);
+    procedure acImprimirExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +36,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmDados, uFuncoes, System.Math;
+uses uDmDados, uFuncoes, System.Math, uDmRelatorios;
 
 procedure TfrmCadastroCaixa.acEditarExecute(Sender: TObject);
 begin
@@ -46,6 +47,17 @@ begin
     edtDescricao.Text     := cdsCaixadescricao.AsString;
     edtValor.Text         := FormatFloat(',#0.00',cdsCaixavalor.AsCurrency);
     RadioGroup1.ItemIndex := ifthen(cdsCaixatipo.AsString = 'C',0,1);
+  end;
+end;
+
+procedure TfrmCadastroCaixa.acImprimirExecute(Sender: TObject);
+begin
+  DmRelatorios := TDmRelatorios.Create(nil);
+  try
+    DmRelatorios.frxReport.LoadFromFile(ExtractFilePath(Application.ExeName)+'relatorios\relCadLancamentoCaixa.fr3');
+    DmRelatorios.frxReport.ShowReport();
+  finally
+    FreeAndNil(DmRelatorios);
   end;
 end;
 
