@@ -1,7 +1,7 @@
 object DmDados: TDmDados
   OldCreateOrder = False
   Height = 371
-  Width = 597
+  Width = 772
   object SQLConnection: TSQLConnection
     ConnectionName = 'financeiro'
     DriverName = 'MySQL'
@@ -38,6 +38,7 @@ object DmDados: TDmDados
       'Encrypted=False'
       'BlobSize=-1'
       'ErrorResourceFile=')
+    Connected = True
     Left = 48
     Top = 24
   end
@@ -330,5 +331,22 @@ object DmDados: TDmDados
     SQLConnection = SQLConnection
     Left = 48
     Top = 296
+  end
+  object sqlConsultas: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 528
+    Top = 16
+  end
+  object dspConsultas: TDataSetProvider
+    DataSet = sqlConsultas
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 608
+    Top = 16
+  end
+  object LocalConnection: TLocalConnection
+    Left = 696
+    Top = 16
   end
 end

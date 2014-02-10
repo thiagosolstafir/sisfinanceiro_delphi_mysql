@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Classes, Data.DB, Data.SqlExpr, Data.DBXMySQL,
   Data.FMTBcd, Datasnap.Provider, Datasnap.DBClient, ZAbstractConnection,
-  ZConnection, ZAbstractRODataset, ZAbstractDataset, ZAbstractTable, ZDataset;
+  ZConnection, ZAbstractRODataset, ZAbstractDataset, ZAbstractTable, ZDataset,
+  Datasnap.Win.TConnect;
 
 type
   TDmDados = class(TDataModule)
@@ -58,6 +59,9 @@ type
     cdsUsuariosstatus: TStringField;
     cdsUsuariosdt_cadastro: TDateField;
     cdsUsuariosid: TIntegerField;
+    sqlConsultas: TSQLQuery;
+    dspConsultas: TDataSetProvider;
+    LocalConnection: TLocalConnection;
   private
     { Private declarations }
   public

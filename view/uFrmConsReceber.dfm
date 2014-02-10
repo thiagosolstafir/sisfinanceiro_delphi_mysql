@@ -3,7 +3,7 @@ object frmConsReceber: TfrmConsReceber
   Top = 0
   BorderStyle = bsToolWindow
   Caption = 'Consultar contas a receber'
-  ClientHeight = 561
+  ClientHeight = 439
   ClientWidth = 955
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
