@@ -10,6 +10,7 @@ interface
   function  GetLoginCadastrado(Login : String) : Boolean;
   procedure ZebrarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
   function  StringParaFloat(s : string) : Extended;
+//  procedure FecharForm(Sender: TObject; var Key: Char);
 
 implementation
 
@@ -101,6 +102,5 @@ begin
      end;
    Result := StrToFloat(t);
 end;
-
 
 end.

@@ -14,7 +14,9 @@ uses
   uFrmCadastroReceber in 'view\uFrmCadastroReceber.pas' {frmCadastroReceber},
   uDmRelatorios in 'datamodule\uDmRelatorios.pas' {DmRelatorios: TDataModule},
   uFrmConsReceber in 'view\uFrmConsReceber.pas' {frmConsReceber},
-  uFrmConsPagar in 'view\uFrmConsPagar.pas' {frmConsPagar};
+  uFrmConsPagar in 'view\uFrmConsPagar.pas' {frmConsPagar},
+  uFrmLogin in 'view\uFrmLogin.pas' {frmLogin},
+  uUsuario in 'classes\uUsuario.pas';
 
 {$R *.res}
 
@@ -23,6 +25,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmDados, DmDados);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmConsPagar, frmConsPagar);
   Application.Run;
 end.

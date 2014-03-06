@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.jpeg,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids,
-  Data.DB;
+  Data.DB, sSkinManager, sEdit;
 
 type
   TfrmPrincipal = class(TForm)
@@ -29,7 +29,7 @@ type
     imgRelCaixa: TImage;
     BalloonHint: TBalloonHint;
     Timer: TTimer;
-    Button1: TButton;
+    sSkinManager1: TsSkinManager;
     procedure TimerTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure imgUsuariosClick(Sender: TObject);
@@ -39,6 +39,7 @@ type
     procedure imgReceberClick(Sender: TObject);
     procedure imgConsReceberClick(Sender: TObject);
     procedure imgConsPagarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,7 +54,8 @@ implementation
 {$R *.dfm}
 
 uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes, uFrmCadastroCaixa,
-  uFrmCadastroPagar, uFrmCadastroReceber, uFrmConsPagar, uFrmConsReceber;
+  uFrmCadastroPagar, uFrmCadastroReceber, uFrmConsPagar, uFrmConsReceber,
+  uFrmLogin;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
@@ -66,6 +68,18 @@ begin
     Application.Terminate
   else
     Abort;
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  frmLogin := TfrmLogin.Create(nil);
+  try
+    frmLogin.ShowModal;
+    if frmLogin.ModalResult = mrNo then
+      Application.Terminate;
+  finally
+    FreeAndNil(frmLogin);
+  end;
 end;
 
 procedure TfrmPrincipal.imgCaixaClick(Sender: TObject);

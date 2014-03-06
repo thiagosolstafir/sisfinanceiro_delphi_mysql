@@ -141,6 +141,11 @@
             <Form>frmConsPagar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="view\uFrmLogin.pas">
+            <Form>frmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\uUsuario.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

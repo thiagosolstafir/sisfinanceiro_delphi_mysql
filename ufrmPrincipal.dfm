@@ -14,6 +14,7 @@
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object imgUsuarios: TImage
@@ -1834,17 +1835,11 @@
     Height = 19
     Panels = <
       item
-        Width = 50
+        Width = 150
+      end
+      item
+        Width = 150
       end>
-  end
-  object Button1: TButton
-    Left = 456
-    Top = 344
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 1
-    OnClick = Button1Click
   end
   object BalloonHint: TBalloonHint
     Left = 552
@@ -1854,5 +1849,46 @@
     OnTimer = TimerTimer
     Left = 552
     Top = 256
+  end
+  object sSkinManager1: TsSkinManager
+    ExtendedBorders = True
+    InternalSkins = <>
+    MenuSupport.IcoLineSkin = 'ICOLINE'
+    MenuSupport.ExtraLineFont.Charset = DEFAULT_CHARSET
+    MenuSupport.ExtraLineFont.Color = clWindowText
+    MenuSupport.ExtraLineFont.Height = -11
+    MenuSupport.ExtraLineFont.Name = 'Tahoma'
+    MenuSupport.ExtraLineFont.Style = []
+    SkinDirectory = 
+      'C:\Users\Thiago\Documents\GitHub\sisfinanceiro_delphi_mysql\comp' +
+      'onentes\alpha controls\Skins'
+    SkinName = 'WEB2'
+    SkinInfo = '8'
+    ThirdParty.ThirdEdits = 
+      'TEdit'#13#10'TMemo'#13#10'THotKey'#13#10'TCheckListBox'#13#10'TCategoryButtons'#13#10'TFileLis' +
+      'tBox'#13#10
+    ThirdParty.ThirdButtons = 'TButton'#13#10
+    ThirdParty.ThirdBitBtns = 'TBitBtn'#13#10
+    ThirdParty.ThirdCheckBoxes = 'TCheckBox'#13#10'TGroupButton'#13#10
+    ThirdParty.ThirdGroupBoxes = 'TGroupBox'#13#10
+    ThirdParty.ThirdListViews = 'TListView'#13#10
+    ThirdParty.ThirdPanels = 'TPage'#13#10'TGridPanel'#13#10
+    ThirdParty.ThirdGrids = 'TDrawGrid'#13#10
+    ThirdParty.ThirdTreeViews = ' '#13#10
+    ThirdParty.ThirdComboBoxes = 'TComboBox'#13#10'TComboBoxEx'#13#10'TColorBox'#13#10
+    ThirdParty.ThirdWWEdits = ' '#13#10
+    ThirdParty.ThirdVirtualTrees = ' '#13#10
+    ThirdParty.ThirdGridEh = ' '#13#10
+    ThirdParty.ThirdPageControl = ' '#13#10
+    ThirdParty.ThirdTabControl = ' '#13#10
+    ThirdParty.ThirdToolBar = ' '#13#10
+    ThirdParty.ThirdStatusBar = ' '#13#10
+    ThirdParty.ThirdSpeedButton = ' '#13#10
+    ThirdParty.ThirdScrollControl = ' '#13#10
+    ThirdParty.ThirdUpDown = ' '#13#10
+    ThirdParty.ThirdScrollBar = ' '#13#10
+    ThirdParty.ThirdStaticText = ' '#13#10
+    Left = 416
+    Top = 184
   end
 end
