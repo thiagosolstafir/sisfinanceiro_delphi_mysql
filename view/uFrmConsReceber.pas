@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ComCtrls, tpEdit, Vcl.ExtCtrls, Data.DB, Datasnap.DBClient;
+  Vcl.DBGrids, Vcl.ComCtrls, tpEdit, Vcl.ExtCtrls, Data.DB, Datasnap.DBClient, StrUtils;
 
 type
   TfrmConsReceber = class(TForm)
@@ -13,22 +13,22 @@ type
     dsConsulta: TDataSource;
     GroupBox1: TGroupBox;
     SpeedButton1: TSpeedButton;
-    RadioGroup1: TRadioGroup;
+    rdgPeriodo: TRadioGroup;
     GroupBox2: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
-    tpEdit1: TtpEdit;
-    tpEdit2: TtpEdit;
+    edtDataIni: TtpEdit;
+    edtDataFim: TtpEdit;
     GroupBox3: TGroupBox;
     Label1: TLabel;
     Label4: TLabel;
     edtDocumento: TEdit;
     edtParcela: TEdit;
-    RadioGroup2: TRadioGroup;
+    rdgStatus: TRadioGroup;
     GroupBox4: TGroupBox;
     StatusBar1: TStatusBar;
     DBGrid1: TDBGrid;
-    BitBtn1: TBitBtn;
+    btnCancelar: TBitBtn;
     BitBtn2: TBitBtn;
     cdsConsultaid: TIntegerField;
     cdsConsultadocumento: TStringField;
@@ -42,9 +42,13 @@ type
     cdsConsultadt_cadastro: TDateField;
     cdsConsultastatus: TStringField;
     cdsConsultadt_pagamento: TDateField;
+    Label5: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     procedure Pesquisar;
     { Private declarations }
@@ -59,7 +63,25 @@ implementation
 
 {$R *.dfm}
 
-uses uDmDados;
+uses uDmDados, uFuncoes;
+
+procedure TfrmConsReceber.btnCancelarClick(Sender: TObject);
+begin
+  rdgPeriodo.ItemIndex := -1;
+  rdgStatus.ItemIndex  := -1;
+  edtDataIni.Clear;
+  edtDataFim.Clear;
+  edtDocumento.Clear;
+  edtParcela.Clear;
+  cdsConsulta.Close;
+  StatusBar1.Panels[0].Text := '';
+end;
+
+procedure TfrmConsReceber.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  ZebrarDBGrid(dsConsulta,DBGrid1,State,Rect,Column);
+end;
 
 procedure TfrmConsReceber.BitBtn2Click(Sender: TObject);
 begin
@@ -80,10 +102,44 @@ begin
   Sql := TStringList.Create;
   try
     sql.Add('select * from contas_receber');
+    sql.Add('where id > 0');
+
+    //Pesquisar por período
+    if (rdgPeriodo.ItemIndex > -1) and (edtDataIni.Text <> '') and (edtDataFim.Text <> '') then
+    begin
+      case rdgPeriodo.ItemIndex of
+        0 : sql.Add('and dt_compra between '+QuotedStr(ReveterData(edtDataIni.Text))+' and '+QuotedStr(ReveterData(edtDataFim.Text)));
+        1 : sql.Add('and dt_vencimento between '+QuotedStr(ReveterData(edtDataIni.Text))+' and '+QuotedStr(ReveterData(edtDataFim.Text)));
+        2 : sql.Add('and dt_pagamento between '+QuotedStr(ReveterData(edtDataIni.Text))+' and '+QuotedStr(ReveterData(edtDataFim.Text)));
+      end;
+    end;
+
+    //Pesquisar por documento
+    if edtDocumento.Text <> '' then
+      sql.Add('and documento = '+QuotedStr(trim(edtDocumento.Text)));
+
+    //Pesquisar por parcela
+    if edtParcela.Text <> '' then
+      sql.Add('and parcela = '+edtParcela.Text);
+
+    //Pesquisar por status
+    if rdgStatus.ItemIndex > -1 then
+    begin
+      case rdgStatus.ItemIndex of
+        0 : sql.Add('and status = ''A''');
+        1 : sql.Add('and status = ''C''');
+        2 : sql.Add('and status = ''B''');
+      end;
+    end;
 
     cdsConsulta.Close;
     cdsConsulta.CommandText := Sql.Text;
     cdsConsulta.Open;
+
+    if cdsConsulta.IsEmpty then
+      Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
+
+    StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsulta.RecordCount);
   finally
     FreeAndNil(Sql);
   end;

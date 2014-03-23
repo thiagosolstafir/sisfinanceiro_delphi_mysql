@@ -72,14 +72,14 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  frmLogin := TfrmLogin.Create(nil);
+{  frmLogin := TfrmLogin.Create(nil);
   try
     frmLogin.ShowModal;
     if frmLogin.ModalResult = mrNo then
       Application.Terminate;
   finally
     FreeAndNil(frmLogin);
-  end;
+  end;  }
 end;
 
 procedure TfrmPrincipal.imgCaixaClick(Sender: TObject);

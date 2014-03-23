@@ -10,9 +10,15 @@ interface
   function  GetLoginCadastrado(Login : String) : Boolean;
   procedure ZebrarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
   function  StringParaFloat(s : string) : Extended;
+  function  ReveterData(S: String) : String;
 //  procedure FecharForm(Sender: TObject; var Key: Char);
 
 implementation
+
+function ReveterData(S: String) : String;
+begin
+  result := copy(S,7,4)+'-'+copy(S,4,2)+'-'+copy(S,1,2);
+end;
 
 procedure CriarForm(T : TComponentClass ;Form : TForm);
 begin
