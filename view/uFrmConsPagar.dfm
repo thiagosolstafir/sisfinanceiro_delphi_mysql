@@ -18,6 +18,19 @@ object frmConsPagar: TfrmConsPagar
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
+  object Label5: TLabel
+    Left = 8
+    Top = 408
+    Width = 342
+    Height = 13
+    Caption = 'Legenda (Status): A = Aberto | B = Baixado | C = Cancelado '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
   object GroupBox1: TGroupBox
     Left = 8
     Top = 8
@@ -134,7 +147,7 @@ object frmConsPagar: TfrmConsPagar
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       OnClick = SpeedButton1Click
     end
-    object RadioGroup1: TRadioGroup
+    object rdgPeriodo: TRadioGroup
       Left = 15
       Top = 21
       Width = 106
@@ -167,7 +180,7 @@ object frmConsPagar: TfrmConsPagar
         Height = 13
         Caption = 'Final:'
       end
-      object tpEdit1: TtpEdit
+      object edtDataIni: TtpEdit
         Left = 48
         Top = 16
         Width = 121
@@ -180,7 +193,7 @@ object frmConsPagar: TfrmConsPagar
         Caracter = tcNumeric
         UF = '[Only for Check = ckIe ]'
       end
-      object tpEdit2: TtpEdit
+      object edtDataFim: TtpEdit
         Left = 48
         Top = 43
         Width = 121
@@ -231,7 +244,7 @@ object frmConsPagar: TfrmConsPagar
         TabOrder = 1
       end
     end
-    object RadioGroup2: TRadioGroup
+    object rdgStatus: TRadioGroup
       Left = 519
       Top = 21
       Width = 122
@@ -256,10 +269,10 @@ object frmConsPagar: TfrmConsPagar
       Top = 252
       Width = 725
       Height = 19
-      Panels = <>
-      ExplicitLeft = 152
-      ExplicitTop = 128
-      ExplicitWidth = 0
+      Panels = <
+        item
+          Width = 300
+        end>
     end
     object DBGrid1: TDBGrid
       Left = 2
@@ -268,16 +281,78 @@ object frmConsPagar: TfrmConsPagar
       Height = 237
       Align = alClient
       DataSource = dsConsulta
+      DrawingStyle = gdsGradient
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDrawColumnCell = DBGrid1DrawColumnCell
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'numero_doc'
+          Width = 95
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'parcela'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_vencimento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'vlr_parcela'
+          Width = 86
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 300
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'vlr_compra'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'vlr_abatido'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_compra'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_cadastro'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'dt_pagamento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'status'
+          Visible = True
+        end>
     end
   end
   object BitBtn1: TBitBtn
-    Left = 581
+    Left = 586
     Top = 403
     Width = 75
     Height = 25
@@ -326,6 +401,7 @@ object frmConsPagar: TfrmConsPagar
       00000000011F1901000000000001010000000000000101000000000000000000
       0000000000000000000000000000000000000000000000000000}
     TabOrder = 2
+    OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
     Left = 662
@@ -371,51 +447,65 @@ object frmConsPagar: TfrmConsPagar
       Required = True
     end
     object cdsConsultanumero_doc: TStringField
+      DisplayLabel = 'Documento:'
       FieldName = 'numero_doc'
       Required = True
     end
     object cdsConsultadescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o:'
       FieldName = 'descricao'
       Size = 200
     end
     object cdsConsultaparcela: TIntegerField
+      DisplayLabel = 'Parcela:'
       FieldName = 'parcela'
       Required = True
     end
     object cdsConsultavlr_parcela: TFMTBCDField
+      DisplayLabel = 'Vlr.Parcela:'
       FieldName = 'vlr_parcela'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsConsultavlr_compra: TFMTBCDField
+      DisplayLabel = 'Vlr.Compra:'
       FieldName = 'vlr_compra'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsConsultavlr_abatido: TFMTBCDField
+      DisplayLabel = 'Vlr.Abatido:'
       FieldName = 'vlr_abatido'
       Required = True
+      currency = True
       Precision = 20
       Size = 2
     end
     object cdsConsultadt_compra: TDateField
+      DisplayLabel = 'Dt.Compra:'
       FieldName = 'dt_compra'
       Required = True
     end
     object cdsConsultadt_cadastro: TDateField
+      DisplayLabel = 'Dt.Cadastro:'
       FieldName = 'dt_cadastro'
       Required = True
     end
     object cdsConsultadt_vencimento: TDateField
+      DisplayLabel = 'Dt.Vencimento:'
       FieldName = 'dt_vencimento'
       Required = True
     end
     object cdsConsultadt_pagamento: TDateField
+      DisplayLabel = 'Dt.Pagamento:'
       FieldName = 'dt_pagamento'
     end
     object cdsConsultastatus: TStringField
+      DisplayLabel = 'Status:'
       FieldName = 'status'
       Required = True
       FixedChar = True

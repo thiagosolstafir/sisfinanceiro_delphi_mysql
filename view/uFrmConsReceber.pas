@@ -99,6 +99,17 @@ procedure TfrmConsReceber.Pesquisar;
 var
   Sql : TStringList;
 begin
+  //Validação
+  if rdgPeriodo.ItemIndex > -1 then
+  begin
+    if (edtDataIni.Text = '') or (edtDataFim.Text = '') then
+    begin
+      Application.MessageBox('Informe a data.','Atenção', MB_OK+MB_ICONWARNING);
+      edtDataIni.SetFocus;
+      Abort;
+    end;
+  end;
+
   Sql := TStringList.Create;
   try
     sql.Add('select * from contas_receber');
@@ -132,14 +143,18 @@ begin
       end;
     end;
 
-    cdsConsulta.Close;
-    cdsConsulta.CommandText := Sql.Text;
-    cdsConsulta.Open;
+    try
+      cdsConsulta.Close;
+      cdsConsulta.CommandText := Sql.Text;
+      cdsConsulta.Open;
 
-    if cdsConsulta.IsEmpty then
-      Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
+      if cdsConsulta.IsEmpty then
+        Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
 
-    StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsulta.RecordCount);
+      StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsulta.RecordCount);
+    except on E: Exception do
+      raise Exception.Create('Erro ao consultar contas a pagar: '+E.Message);
+    end;
   finally
     FreeAndNil(Sql);
   end;
