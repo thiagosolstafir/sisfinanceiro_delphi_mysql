@@ -263,6 +263,7 @@ object DmDados: TDmDados
     Top = 296
     object cdsUsuariosid: TIntegerField
       AutoGenerateValue = arDefault
+      DisplayLabel = 'Id:'
       FieldName = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
@@ -301,7 +302,7 @@ object DmDados: TDmDados
     Top = 296
   end
   object sdsCaixa: TSQLDataSet
-    CommandText = 'SELECT * FROM CAIXA'
+    CommandText = 'SELECT * FROM CAIXA where id = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -309,7 +310,7 @@ object DmDados: TDmDados
     Top = 96
   end
   object sdsContas_pagar: TSQLDataSet
-    CommandText = 'SELECT * FROM CONTAS_PAGAR'
+    CommandText = 'SELECT * FROM CONTAS_PAGAR where id = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -317,7 +318,7 @@ object DmDados: TDmDados
     Top = 160
   end
   object sdsContas_receber: TSQLDataSet
-    CommandText = 'SELECT * FROM CONTAS_RECEBER'
+    CommandText = 'SELECT * FROM CONTAS_RECEBER where id = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -325,7 +326,7 @@ object DmDados: TDmDados
     Top = 232
   end
   object sdsUsuarios: TSQLDataSet
-    CommandText = 'SELECT * FROM USUARIOS'
+    CommandText = 'SELECT * FROM USUARIOS where id = 0'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection
@@ -348,5 +349,103 @@ object DmDados: TDmDados
   object LocalConnection: TLocalConnection
     Left = 696
     Top = 16
+  end
+  object cdsReceber_detalhes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspReceber_detalhes'
+    Left = 624
+    Top = 96
+    object cdsReceber_detalhesid: TIntegerField
+      FieldName = 'id'
+      Required = True
+    end
+    object cdsReceber_detalhesid_receber: TIntegerField
+      FieldName = 'id_receber'
+      Required = True
+    end
+    object cdsReceber_detalhesdetalhes: TStringField
+      FieldName = 'detalhes'
+      Required = True
+      Size = 255
+    end
+    object cdsReceber_detalhesvalor: TFMTBCDField
+      FieldName = 'valor'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object cdsReceber_detalhesdata: TDateField
+      FieldName = 'data'
+      Required = True
+    end
+    object cdsReceber_detalhesusuario: TStringField
+      FieldName = 'usuario'
+      Required = True
+      Size = 50
+    end
+  end
+  object dspReceber_detalhes: TDataSetProvider
+    DataSet = sdsReceber_detalhes
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 512
+    Top = 96
+  end
+  object sdsReceber_detalhes: TSQLDataSet
+    CommandText = 'SELECT * FROM receber_detalhes where id = 0'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 400
+    Top = 96
+  end
+  object cdsPagar_detalhes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspPagar_detalhes'
+    Left = 624
+    Top = 160
+    object cdsPagar_detalhesid: TIntegerField
+      FieldName = 'id'
+      Required = True
+    end
+    object cdsPagar_detalhesid_pagar: TIntegerField
+      FieldName = 'id_pagar'
+      Required = True
+    end
+    object cdsPagar_detalhesdetalhes: TStringField
+      FieldName = 'detalhes'
+      Required = True
+      Size = 255
+    end
+    object cdsPagar_detalhesvalor: TFMTBCDField
+      FieldName = 'valor'
+      Required = True
+      Precision = 20
+      Size = 2
+    end
+    object cdsPagar_detalhesdata: TDateField
+      FieldName = 'data'
+      Required = True
+    end
+    object cdsPagar_detalhesusuario: TStringField
+      FieldName = 'usuario'
+      Required = True
+      Size = 50
+    end
+  end
+  object dspPagar_detalhes: TDataSetProvider
+    DataSet = sdsPagar_detalhes
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 512
+    Top = 160
+  end
+  object sdsPagar_detalhes: TSQLDataSet
+    CommandText = 'SELECT * FROM pagar_detalhes where id = 0'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection
+    Left = 400
+    Top = 160
   end
 end

@@ -43,12 +43,15 @@ type
     cdsConsultastatus: TStringField;
     cdsConsultadt_pagamento: TDateField;
     Label5: TLabel;
+    cdsConsultaTotal: TAggregateField;
+    btnBaixar: TBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnBaixarClick(Sender: TObject);
   private
     procedure Pesquisar;
     { Private declarations }
@@ -63,7 +66,17 @@ implementation
 
 {$R *.dfm}
 
-uses uDmDados, uFuncoes;
+uses uDmDados, uFuncoes, uFrmBaixarReceber;
+
+procedure TfrmConsReceber.btnBaixarClick(Sender: TObject);
+begin
+  frmBaixarReceber := TfrmBaixarReceber.Create(nil);
+  try
+    frmBaixarReceber.ShowModal;
+  finally
+    FreeAndNil(frmBaixarReceber);
+  end;
+end;
 
 procedure TfrmConsReceber.btnCancelarClick(Sender: TObject);
 begin
@@ -152,6 +165,8 @@ begin
         Application.MessageBox('Nenhum registro encontrado.','Atenção',MB_OK+MB_ICONWARNING);
 
       StatusBar1.Panels[0].Text := 'Registro(s) encontrado(s): '+inttostr(cdsConsulta.RecordCount);
+      StatusBar1.Panels[1].Text := 'Total a receber: '+FormatFloat('R$ #,0.00',cdsConsultaTotal.AsVariant);
+      btnBaixar.Enabled := not cdsConsulta.IsEmpty;
     except on E: Exception do
       raise Exception.Create('Erro ao consultar contas a pagar: '+E.Message);
     end;

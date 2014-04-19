@@ -271,6 +271,9 @@ object frmConsReceber: TfrmConsReceber
       Panels = <
         item
           Width = 300
+        end
+        item
+          Width = 200
         end>
     end
     object DBGrid1: TDBGrid
@@ -438,8 +441,35 @@ object frmConsReceber: TfrmConsReceber
     TabOrder = 3
     OnClick = BitBtn2Click
   end
+  object btnBaixar: TBitBtn
+    Left = 510
+    Top = 403
+    Width = 75
+    Height = 25
+    Caption = 'Baixar'
+    Enabled = False
+    Glyph.Data = {
+      CA010000424DCA01000000000000CA0000002800000010000000100000000100
+      08000000000000010000120B0000120B0000250000002500000000000000FFFF
+      FF00FF00FF0012823A004ED6920062DA9E006ADAA20092E2BA0096E6BE002ACE
+      7E002ED282006EE2AA002ED686002ED286004AD292006EE6AE006ADAA60096EA
+      C2002ED28A002ECE860032D68E0062DAA60072E6B2009AEAC6002ED28E002ECE
+      8A0032DA920036DA960072E6B60072E2B20096EAC60036DA9A0072EABA009AEA
+      CA009AEACE00FEFEFE00FFFFFF00020202020202020202020202020202020202
+      0202020202020202020202020202020202020203030202020202020202020202
+      020203161C030202020202020202020202030F1A1B2003020202020202020202
+      030B141A1B1F1C030202020202020203040A0C1E171A1A1D0302020202020308
+      05091123231E120D0B0302020202020323082303032311130910030202020202
+      032303020203231E130906030202020202030202020203231E19130E03020202
+      0202020202020203232118150703020202020202020202020323222303020202
+      0202020202020202020323030202020202020202020202020202030202020202
+      0202020202020202020202020202}
+    TabOrder = 4
+    OnClick = btnBaixarClick
+  end
   object cdsConsulta: TClientDataSet
     Aggregates = <>
+    AggregatesActive = True
     Params = <>
     ProviderName = 'dspConsultas'
     RemoteServer = DmDados.LocalConnection
@@ -513,6 +543,13 @@ object frmConsReceber: TfrmConsReceber
     object cdsConsultadt_pagamento: TDateField
       DisplayLabel = 'Dt.Pagamento:'
       FieldName = 'dt_pagamento'
+    end
+    object cdsConsultaTotal: TAggregateField
+      FieldName = 'Total'
+      Active = True
+      currency = True
+      DisplayName = ''
+      Expression = 'SUM(vlr_parcela)'
     end
   end
   object dsConsulta: TDataSource

@@ -146,6 +146,14 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="classes\uUsuario.pas"/>
+        <DCCReference Include="view\uFrmBaixarPagar.pas">
+            <Form>frmBaixarPagar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\uFrmBaixarReceber.pas">
+            <Form>frmBaixarReceber</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
