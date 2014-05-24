@@ -70,8 +70,15 @@ uses uDmDados, uFuncoes, uFrmBaixarReceber;
 
 procedure TfrmConsReceber.btnBaixarClick(Sender: TObject);
 begin
+  if (cdsConsultastatus.AsString = 'B') or (cdsConsultastatus.AsString = 'C') then
+  begin
+    Application.MessageBox('Não é possível baixar um documento cancelado ou baixado.','AtençãO',MB_OK+MB_ICONWARNING);
+    abort;
+  end;
+
   frmBaixarReceber := TfrmBaixarReceber.Create(nil);
   try
+    frmBaixarReceber.fId := cdsConsultaid.AsInteger;
     frmBaixarReceber.ShowModal;
   finally
     FreeAndNil(frmBaixarReceber);

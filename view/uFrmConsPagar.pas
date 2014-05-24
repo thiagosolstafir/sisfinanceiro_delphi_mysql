@@ -88,8 +88,15 @@ end;
 
 procedure TfrmConsPagar.btnBaixarClick(Sender: TObject);
 begin
+  if (cdsConsultastatus.AsString = 'B') or (cdsConsultastatus.AsString = 'C') then
+  begin
+    Application.MessageBox('Não é possível baixar um documento cancelado ou baixado.','AtençãO',MB_OK+MB_ICONWARNING);
+    abort;
+  end;
+
   frmBaixarPagar := TfrmBaixarPagar.Create(nil);
   try
+    frmBaixarPagar.fId := cdsConsultaid.AsInteger;
     frmBaixarPagar.ShowModal;
   finally
     FreeAndNil(frmBaixarPagar);
