@@ -1859,9 +1859,7 @@
     MenuSupport.ExtraLineFont.Height = -11
     MenuSupport.ExtraLineFont.Name = 'Tahoma'
     MenuSupport.ExtraLineFont.Style = []
-    SkinDirectory = 
-      'C:\Users\Thiago\Documents\GitHub\sisfinanceiro_delphi_mysql\comp' +
-      'onentes\alpha controls\Skins'
+    SkinDirectory = 'C:\sisfinanceiro_delphi_mysql\componentes\alpha controls\Skins'
     SkinName = 'WEB2'
     SkinInfo = '8'
     ThirdParty.ThirdEdits = 

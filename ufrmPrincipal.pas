@@ -55,7 +55,7 @@ implementation
 
 uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes, uFrmCadastroCaixa,
   uFrmCadastroPagar, uFrmCadastroReceber, uFrmConsPagar, uFrmConsReceber,
-  uFrmLogin;
+  uFrmLogin, uFrmSplash;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
@@ -72,14 +72,21 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-{  frmLogin := TfrmLogin.Create(nil);
+  frmSplash := TfrmSplash.Create(nil);
+  try
+    frmSplash.ShowModal;
+  finally
+    FreeAndNil(frmSplash);
+  end;
+
+  frmLogin := TfrmLogin.Create(nil);
   try
     frmLogin.ShowModal;
     if frmLogin.ModalResult = mrNo then
       Application.Terminate;
   finally
     FreeAndNil(frmLogin);
-  end;  }
+  end;
 end;
 
 procedure TfrmPrincipal.imgCaixaClick(Sender: TObject);

@@ -18,7 +18,8 @@ uses
   uFrmLogin in 'view\uFrmLogin.pas' {frmLogin},
   uUsuario in 'classes\uUsuario.pas',
   uFrmBaixarPagar in 'view\uFrmBaixarPagar.pas' {frmBaixarPagar},
-  uFrmBaixarReceber in 'view\uFrmBaixarReceber.pas' {frmBaixarReceber};
+  uFrmBaixarReceber in 'view\uFrmBaixarReceber.pas' {frmBaixarReceber},
+  uFrmSplash in 'view\uFrmSplash.pas' {frmSplash};
 
 {$R *.res}
 

@@ -4,18 +4,21 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg;
 
 type
   TfrmLogin = class(TForm)
-    edtLogin: TEdit;
     edtSenha: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     btnEntrar: TBitBtn;
+    Image1: TImage;
+    edtLogin: TComboBox;
     procedure btnEntrarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +81,11 @@ procedure TfrmLogin.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if key = #13 then
     Perform(WM_NEXTDLGCTL,0,0);
+end;
+
+procedure TfrmLogin.FormShow(Sender: TObject);
+begin
+  TUsuario.CarregarLogin(edtLogin);
 end;
 
 end.

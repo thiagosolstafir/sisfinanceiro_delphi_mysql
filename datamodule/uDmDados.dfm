@@ -38,7 +38,6 @@ object DmDados: TDmDados
       'Encrypted=False'
       'BlobSize=-1'
       'ErrorResourceFile=')
-    Connected = True
     Left = 48
     Top = 24
   end
