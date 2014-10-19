@@ -1841,6 +1841,15 @@
         Width = 150
       end>
   end
+  object BitBtn1: TBitBtn
+    Left = 688
+    Top = 200
+    Width = 75
+    Height = 25
+    Caption = 'BitBtn1'
+    TabOrder = 1
+    OnClick = BitBtn1Click
+  end
   object BalloonHint: TBalloonHint
     Left = 552
     Top = 200
@@ -1886,6 +1895,7 @@
     ThirdParty.ThirdUpDown = ' '#13#10
     ThirdParty.ThirdScrollBar = ' '#13#10
     ThirdParty.ThirdStaticText = ' '#13#10
+    ThirdParty.ThirdNativePaint = ' '
     Left = 416
     Top = 184
   end

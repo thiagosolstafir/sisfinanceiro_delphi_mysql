@@ -3,7 +3,8 @@ unit uFuncoes;
 interface
 
   uses Vcl.Forms, System.SysUtils, System.Classes, uDmDados,
-       Data.DB, Data.SqlExpr, Vcl.DBGrids, Vcl.Grids, System.Types;
+       Data.DB, Data.SqlExpr, Vcl.DBGrids, Vcl.Grids, System.Types,
+  System.Generics.Collections;
 
   procedure CriarForm(T : TComponentClass ;Form : TForm);
   function  GetId(Campo, Tabela : String) : Integer;
@@ -11,9 +12,25 @@ interface
   procedure ZebrarDBGrid(DataSource : TDataSource; Sender : TDBGrid; State : TGridDrawState; Rect : TRect; Column : TColumn);
   function  StringParaFloat(s : string) : Extended;
   function  ReveterData(S: String) : String;
+  function  GetInformacoesCaixa() : TList<String>;
 //  procedure FecharForm(Sender: TObject; var Key: Char);
 
 implementation
+
+function GetInformacoesCaixa() : TList<String>;
+var
+  Valores : TList<String>;
+begin
+  Valores := TList<String>.Create;
+  try
+    Valores.Add('A');
+    Valores.Add('B');
+    Valores.Add('C');
+    result := Valores;
+  finally
+    FreeAndNil(Valores);
+  end;
+end;
 
 function ReveterData(S: String) : String;
 begin

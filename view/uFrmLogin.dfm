@@ -888,6 +888,12 @@ object frmLogin: TfrmLogin
     Height = 13
     Caption = 'Senha:'
   end
+  object lblUltimoAcesso: TLabel
+    Left = 148
+    Top = 166
+    Width = 3
+    Height = 13
+  end
   object edtSenha: TEdit
     Left = 148
     Top = 139

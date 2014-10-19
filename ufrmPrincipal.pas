@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.jpeg,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids,
-  Data.DB, sSkinManager, sEdit;
+  Data.DB, sSkinManager, sEdit, sLabel, Vcl.Buttons;
 
 type
   TfrmPrincipal = class(TForm)
@@ -30,16 +30,17 @@ type
     BalloonHint: TBalloonHint;
     Timer: TTimer;
     sSkinManager1: TsSkinManager;
+    BitBtn1: TBitBtn;
     procedure TimerTimer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure imgUsuariosClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure imgCaixaClick(Sender: TObject);
     procedure imgPagarClick(Sender: TObject);
     procedure imgReceberClick(Sender: TObject);
     procedure imgConsReceberClick(Sender: TObject);
     procedure imgConsPagarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,11 +56,11 @@ implementation
 
 uses uFrmCadastroBasico, uFrmCadastroUsuarios, uFuncoes, uFrmCadastroCaixa,
   uFrmCadastroPagar, uFrmCadastroReceber, uFrmConsPagar, uFrmConsReceber,
-  uFrmLogin, uFrmSplash;
+  uFrmLogin, uFrmSplash, uFrmSaldoCaixa;
 
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
+procedure TfrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
-//  CriarForm(TfrmCadastroBasico, frmCadastroBasico);
+  CriarForm(TfrmSaldoCaixa, frmSaldoCaixa);
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

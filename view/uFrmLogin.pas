@@ -15,6 +15,7 @@ type
     btnEntrar: TBitBtn;
     Image1: TImage;
     edtLogin: TComboBox;
+    lblUltimoAcesso: TLabel;
     procedure btnEntrarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -32,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses uUsuario, ufrmPrincipal, uFuncoes;
+uses uUsuario, ufrmPrincipal, uFuncoes, uSistema;
 
 procedure TfrmLogin.btnEntrarClick(Sender: TObject);
 var
@@ -57,6 +58,7 @@ begin
     Usuario.Senha := trim(edtSenha.Text);
     if Usuario.Logar then
     begin
+      TSistema.SetUltimoAcesso(Usuario.Login);
       frmPrincipal.StatusBar1.Panels[1].Text := 'Usuário: '+Usuario.Login;
       ModalResult := mrOk;
     end
@@ -86,6 +88,8 @@ end;
 procedure TfrmLogin.FormShow(Sender: TObject);
 begin
   TUsuario.CarregarLogin(edtLogin);
+  edtLogin.Text           := TSistema.GetUsuarioAcesso;
+  lblUltimoAcesso.Caption := TSistema.GetUltimoAcesso;
 end;
 
 end.

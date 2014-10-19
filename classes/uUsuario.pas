@@ -21,16 +21,14 @@ type
 
 implementation
 
-uses
-  Data.SqlExpr, uDmDados;
-
 { TUsuario }
+
+uses uSQL;
 
 class procedure TUsuario.CarregarLogin(Cbx: TCombobox);
 begin
-  with TSQLQuery.Create(nil) do
+  with TSql.Create(nil) do
   try
-    SQLConnection := DmDados.SQLConnection;
     Sql.Add('SELECT LOGIN FROM USUARIOS');
     Open;
     if not IsEmpty then
@@ -50,9 +48,8 @@ end;
 
 function TUsuario.Logar: boolean;
 begin
-  with TSQLQuery.Create(nil) do
+  with TSql.Create(nil) do
   try
-    SQLConnection := DmDados.SQLConnection;
     Sql.Add('SELECT ID FROM USUARIOS WHERE LOGIN = :LOGIN AND SENHA = :SENHA');
     Params[0].AsString := fLogin;
     Params[1].AsString := fSenha;

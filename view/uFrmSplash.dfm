@@ -1028,7 +1028,7 @@ object frmSplash: TfrmSplash
     TabOrder = 0
   end
   object Timer1: TTimer
-    Interval = 50
+    Interval = 25
     OnTimer = Timer1Timer
     Left = 360
     Top = 16

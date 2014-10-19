@@ -19,7 +19,12 @@ uses
   uUsuario in 'classes\uUsuario.pas',
   uFrmBaixarPagar in 'view\uFrmBaixarPagar.pas' {frmBaixarPagar},
   uFrmBaixarReceber in 'view\uFrmBaixarReceber.pas' {frmBaixarReceber},
-  uFrmSplash in 'view\uFrmSplash.pas' {frmSplash};
+  uFrmSplash in 'view\uFrmSplash.pas' {frmSplash},
+  uSistema in 'classes\uSistema.pas',
+  uGetConexao in 'classes\uGetConexao.pas',
+  uSQL in 'classes\uSQL.pas',
+  uFrmSaldoCaixa in 'view\uFrmSaldoCaixa.pas' {frmSaldoCaixa},
+  uCaixa in 'classes\uCaixa.pas';
 
 {$R *.res}
 
@@ -28,5 +33,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmDados, DmDados);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmSaldoCaixa, frmSaldoCaixa);
   Application.Run;
 end.
